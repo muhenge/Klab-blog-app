@@ -20,6 +20,7 @@ Build an application, that allows a user with an account to create articles and 
 
 - title
 - content
+- Perfom all CRUD operations
 
   ```
   title
@@ -29,7 +30,6 @@ Build an application, that allows a user with an account to create articles and 
   ```
        Content
       - Is required
-
 
 ## Models and relationships
 
@@ -42,6 +42,7 @@ Build an application, that allows a user with an account to create articles and 
 - User articles list
 - User article page
 - <strong>Go to thumb folder on the root of this project to see the UI suggestion, follow the flow from 1 to 3</strong>
+- Pages are not complete those three are the main, create other that you are importante, like page to add article,...
   
 > N.B: Although the front-end is not our main purpose, it has to be signficant, you can use any library or vanilla CSS.
 
