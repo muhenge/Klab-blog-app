@@ -4,14 +4,14 @@
 
 ## Assignment
 
-Build an application, that allows a user with an account to create articles and publish them, all necessary data must be stored in the database, hint: there is no limitation of database to use, as long as is a relational database like MySql or PostgreSQL. 
+Build an application, that allows a user with an account to create articles and publish them, all necessary data must be stored in the database, hint: there is no limitation of database to use, as long as is a relational database like MySql or PostgreSQL.
 
 ### User has
 
 - User name
 - email
 
-``` 
+```
   username is required
 ```
 
@@ -19,16 +19,16 @@ Build an application, that allows a user with an account to create articles and 
 
 - title
 - content
-  
-  ``` 
+
+  ```
   title
     - is required
     - is <= 75 caracter
-    
-  ``` 
+
+  ```
        Content
       - Is required
-  
+
 
 ## Models and relationships
 
