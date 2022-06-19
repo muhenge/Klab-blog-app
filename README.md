@@ -12,7 +12,8 @@ Build an application, that allows a user with an account to create articles and 
 - email
 
 ```
-  username is required
+  username is required, should contain only alphabets
+  email should be email format
 ```
 
 ### Article has
@@ -40,18 +41,15 @@ Build an application, that allows a user with an account to create articles and 
 - Home page for user Sign up/log in
 - User articles list
 - User article page
-> N.B: Although the front-end is not our main purpose, it must be signficant any library or vanilla css as you want, but not spending to much time on it
+- <strong>Go to thumb folder on the root of this project to see the UI suggestion, follow the flow from 1 to 3</strong>
+  
+> N.B: Although the front-end is not our main purpose, it has to be signficant, you can use any library or vanilla CSS.
 
 ## App auth
 
-- Authenticated Users can view all articles,
-- Authenticated Users can visit other users' articles
-
-- An unauthenticated user can only visit the home page
-
-- An unauthenticated user attempting to another page is redirected to the home page with an alert.
-
-
+- Authenticated User can view all users,
+- Authenticated User can visit other users' articles
+- Unauthenticated User tyring to visit unthourized pages should be redirected to the homepage with an alert.
 
 
 
