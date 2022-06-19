@@ -1,6 +1,7 @@
 # Klab Blog app
 
 > In this assignment, we are going to create a small platform where authors can write and publish articles just like [hackernoon](https://hackernoon.com/),The objective of this project is to master laravel eloquent ORM, building relationships between database tables, and the use of middleware.
+> Do not edit the readme and never push any code on development and main branch.
 
 ## Assignment
 
