@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
 function register() {
-    return "Personal Details";
+    return " Your have Registered Personal Details";
 }
 }

@@ -6,6 +6,7 @@
     <title>Document</title>
     <h1 style="text-align:center";>STUDENT REGISTRATION FORM</h1>
     <form action="register" method="POST" style="text-align:center";>
+        @csrf
         FirstName:  <input type="text" name="firstname" placeholder="firstname"><br><br>
         LastName:   <input type="text" name="lastname" placeholder="lastname"><br><br>
         UserEmail:  <input type="email" name="email" placehold="email"><br><br>

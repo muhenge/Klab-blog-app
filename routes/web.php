@@ -24,4 +24,4 @@ Route::get('/log', function () {
 
 
 Route::post("register",[RegisterController::class,'register']);
-Route::view('register',"register");
+Route::view('register',"register");    
