@@ -41,4 +41,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    function getAlert(){
+
+        return  $this->hasMany('App\Models\article','user_id');
+    }
 }
