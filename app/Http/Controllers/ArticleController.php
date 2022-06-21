@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\article;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+use SweetAlert;
 
 class ArticleController extends Controller
 
@@ -18,34 +22,35 @@ class ArticleController extends Controller
         return  $data;
 
     }
+
+    function articleform(){
+
+        return  view('article');
+    }
      
-function store(Requst  $request)
+function store(Request  $request)
 {
 
     $AlertType='success';
     $validator=Validator::make($request->all(),[
         'title'=>'required|regex:/^[a-zA-Z\s]*$/',
-        'contennt'=>'required|string|min:10|max:350',
-        'user_id'=>'required'|digits
+        'content'=>'required|string|min:10|max:350',
+        
     ])->validate();
-    $data=new article();
-    $data->title=$request->input('title');
-    $data->content=$request->input('content');
-    $data->content=$request->input('user_id');
-    if(DB::table('articles')->where('title',$data->title)->exists())
-    {
-        return back()->with('fail','data Exists');
+  
+   
+$data=article::create([
 
-    }
+    'title'=>$request->title,
+    'content'=>$request->content,
+    'user_id'=>1
+]);
+Alert::toast('Article created successfully', 'success');
+return back();
+}
 
-   else{
-    $data->save();
-    Alert::success('this is success alert');
-    
-
-
-     }
 }
 
 
-}
+
+

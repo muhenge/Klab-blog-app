@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\PostController;
 use App\Http\Controllers\weetalertController;
+use App\Http\Controllers\ArticleController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +35,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
+Route::group(['middleware' =>['auth']],function(){
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/gustave', [App\Http\Controllers\PostController::class, 'ddj'])->name('gustave');
 Route::get('/alert/{AlertType}', [App\Http\Controllers\sweetalertController::class, 'alert'])->name('alert');
+Route::post('registerArticle',[ ArticleController::class,'store'])->name('registerArticle');
+Route::get('article',[ App\Http\Controllers\ArticleController::class,'articleform'])->name('alerticle');
+});
