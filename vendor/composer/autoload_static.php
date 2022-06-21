@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
+class ComposerStaticInit79a44ad16cb61236af8eea1e26aedbc2
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -178,8 +178,8 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Whoops\\' => 
         array (
@@ -335,8 +335,8 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -508,6 +508,11 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\TodosController' => __DIR__ . '/../..' . '/app/Http/Controllers/TodosController.php',
+        'App\\Http\\Controllers\\formController' => __DIR__ . '/../..' . '/app/Http/Controllers/formController.php',
+        'App\\Http\\Controllers\\homecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/homecontroller.php',
+        'App\\Http\\Controllers\\maincontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/maincontroller.php',
+        'App\\Http\\Controllers\\searchcontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/searchcontroller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -518,6 +523,8 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\blog' => __DIR__ . '/../..' . '/app/Models/blog.php',
+        'App\\Models\\blogs' => __DIR__ . '/../..' . '/app/Models/blogs.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -4683,7 +4690,6 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingImportSolutionProvider' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/MissingImportSolutionProvider.php',
         'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingLivewireComponentSolutionProvider' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/MissingLivewireComponentSolutionProvider.php',
         'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingMixManifestSolutionProvider' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/MissingMixManifestSolutionProvider.php',
-        'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingViteManifestSolutionProvider' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/MissingViteManifestSolutionProvider.php',
         'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\RouteNotDefinedSolutionProvider' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/RouteNotDefinedSolutionProvider.php',
         'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\RunningLaravelDuskInProductionProvider' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/RunningLaravelDuskInProductionProvider.php',
         'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\SolutionProviderRepository' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Solutions/SolutionProviders/SolutionProviderRepository.php',
@@ -5694,10 +5700,10 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit79a44ad16cb61236af8eea1e26aedbc2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit79a44ad16cb61236af8eea1e26aedbc2::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit79a44ad16cb61236af8eea1e26aedbc2::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit79a44ad16cb61236af8eea1e26aedbc2::$classMap;
 
         }, null, ClassLoader::class);
     }
