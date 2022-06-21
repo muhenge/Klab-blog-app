@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\article;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use SweetAlert;
@@ -13,14 +14,14 @@ class ArticleController extends Controller
 
 {
 
-    function   index()
-
+   
+    function articleList($id)
     {
-
-        $data=article::all()->getAlert();
-
-        return  $data;
-
+        $AlertType='success';
+        $data=User::find($id)->getAlert;
+        
+      Alert::toast('Your Data Fetched Successfully!','success');
+        return view('TestMe\userblogdetails',compact('data'));
     }
 
     function articleform(){

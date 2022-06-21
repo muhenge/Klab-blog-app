@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -28,7 +28,9 @@ class HomeController extends Controller
         $AlertType='success';
 
         Alert::toast('Your Data has been deleted!','warning');
-        return view('home'); 
+         $data=user::all();
+        return view('home',compact('data'));
     }
+   
   
 }

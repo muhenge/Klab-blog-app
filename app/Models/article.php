@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class article extends Model
 {
-
+    protected $primaryKey="id";
 protected $fillable=[
     'title',
     'content',
@@ -16,6 +16,10 @@ protected $fillable=[
 ];
 
     use HasFactory;
+    public function post()
+    {
+        return $this->belongsTo(User::class);
+    }
   
 
 }

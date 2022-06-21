@@ -14,7 +14,7 @@ class PostController extends Controller
 
        $AlertType='success';
 
-        // Alert::toast('Your Data has been deleted!','warning');
+       
        // Alert::success('this is success alert');
        Alert::question('Question Title', 'Question Message');
         return view('layouts.header');

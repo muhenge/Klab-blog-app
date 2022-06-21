@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $primaryKey="id";
     protected $fillable = [
         'name',
         'email',
@@ -41,8 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    use HasFactory;
     function getAlert(){
+        return $this->hasMany('App\Models\article', 'user_id');
 
-        return  $this->hasMany('App\Models\article','user_id');
+       
     }
+   
 }

@@ -9,7 +9,7 @@
         <meta content="ThemeDesign" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="{{asset('assets/images/2020bbbbbbbbbyyyyyxcxcxcxcxcxxxxxxxx')}}">
+        <link rel="shortcut icon" href="{{asset('assets/images/20.png')}}">
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{{asset('assets/plugins/morris/morris.css')}}">
@@ -111,10 +111,21 @@
                                        aria-haspopup="false" aria-expanded="false">
                                         <img src="{{asset('assets/images/profile.png')}}" alt="user" class="rounded-circle">
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                     </div>
+                                  
+                                    
+
+                                
                                 </li>
 
                             </ul>
