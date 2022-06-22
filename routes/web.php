@@ -28,8 +28,13 @@ Route::post('/articles', [ArticleController::class, 'store'])->name('articlesSto
 Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articlesShow');
 Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articlesEdit');
 Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articlesUpdate');
-Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articlesDestroy');
+Route::get('/articles/{id}', [ArticleController::class, 'destroy'])->name('articlesDelete');
+Route::get('/articles{id}/title', [ArticleController::class, 'title'])->name('articleTitle');
+Route::get('/articles{id}/articles', [ArticleController::class, 'content'])->name('articleContent');
 
+//Users route
+Route::get('/users', [UserController::class, 'index'])->name('userIndex');
+// Route::get('/users/register', [UserController::class, 'register'])->name('userRegister');
 
 });
 

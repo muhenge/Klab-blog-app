@@ -22,6 +22,9 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            @auth
+            {{ Auth::user()->email }}
+            @endauth
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -35,10 +38,10 @@
                     <ul class="navbar-nav me-auto">
                      @auth
                        <li class="nav-item">
-                        <a class="nav-link" href="">{{ __("Users") }}</a>
+                        <a class="nav-link" href="{{ route('userIndex') }}">{{ __("Users") }}</a>
                        </li>
                        <li class="nav-item">
-                        <a class="nav-link" href="">{{ __('District') }}</a>
+                        <a class="nav-link" href="{{ route('articlesIndex') }}">{{ __('Articles') }}</a>
                        </li>
                        
                        

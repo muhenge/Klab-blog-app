@@ -6,43 +6,36 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><h3 style="float:left">List of Users</h3>
+                    <h3 class="card-title"><h3 style="float:left">List of Artcles</h3><a href="{{ route('userIndex') }}">
+                        <button class="btn btn-primary" style="float:right">Back</button></a></h3>
                 </div>
 
                 <div class="card-body">
                    <table class="table table-condensed table-hover">
                     <thead>
-                        <tr>
-                            <th>N <sup>o</sup></th>
-                            <th>Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                        @php
                             $i=1;
                        @endphp
-                        @forelse ($users as $user)
-                        
+                        @forelse ($articles as $article)
                             <tr style="cursor: pointer;">
-                                <td>{{ $i }}</td>
-                                <td>
-                                    <a style="text-decoration: none; color:black" href="{{ route('articleTitle', $user->id) }}">
-                                    {{ $user->username }}
-                                </a>
-                                </td>
+                                <th>{{ $i }}</th>
+                                <th>
+                                    <a style="text-decoration: none; color:black" href="{{ route("articleContent", $article->id) }}">
+                                        {{ $article->title }}
+                                    </a>
+                                </th>
                                 @php
                                     $i++
                                 @endphp
                             </tr>
-                        
                         @empty
                         <tr>
                             <td colspan="2">
-                                <center><h5 style="color:red; size:24px;">No user found in database.</h5></center>
+                                <center><h5 style="color:red; size:24px;">No Article found in database.</h5></center>
                             </td>
                         </tr>
                         @endforelse
-                    </tbody>
+                    </thead>
                    </table>
                    
 
