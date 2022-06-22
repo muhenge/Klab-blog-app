@@ -34,8 +34,25 @@ class HomeController extends Controller
         // Alert::toast('Your Data has been deleted!','warning');
          $data=user::all();
          // 
-        $dat=DB::select('SELECT * from  articles where id='.Auth::user()->id.'');
-        return view('home',compact(['data','dat']));
+
+         $count=1;
+        $dat=DB::select('SELECT * from  articles where user_id='.Auth::user()->id.'');
+        $count=count($dat);
+        if($count>=1)
+
+        {
+
+            return view('home',compact(['data','dat','count']));
+        }
+        else{
+
+            $AlertType='warning';
+
+         Alert::toast('Is  good to create  articles  for you?','warning');
+
+         return view('home',compact(['data','dat','count']));
+        }
+       
        
     }
    

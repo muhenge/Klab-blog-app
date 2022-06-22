@@ -29,9 +29,12 @@
                             <tbody>
                                
                                 {{Session::get('id')}}
+                                <?php   $aa=0;?>
                             @foreach ($dat as  $valu)
+
+                            
                               <tr>
-                                <th scope="row">1</th>
+                                <th scope="row"><?php  echo $aa+=1;?></th>
                                 <td>{{$valu->title}}</td>
                                 <td>{{$valu->content}}</td>
                                 <td width='150'>

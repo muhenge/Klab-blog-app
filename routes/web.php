@@ -42,6 +42,7 @@ Route::delete('delete/{id}',[App\Http\Controllers\ArticleController::class,'dest
 
 
 });
+Route::get('code',[App\Http\Controllers\QrcodeController::class,'index'])->name('code');
 
 
 Auth::routes();
