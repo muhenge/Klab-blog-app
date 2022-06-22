@@ -33,7 +33,7 @@
                    <span class="text-danger">@error('title'){{$message.old('title')}}
                     @enderror</span>
                </div>
-           </div>
+            </div>
                  <div class="form-group">
                      <label>Content</label>
                      <div>

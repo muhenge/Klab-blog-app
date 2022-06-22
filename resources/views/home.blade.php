@@ -2,27 +2,65 @@
 {{-- @extends('layouts.app') --}}
 @section('content')
 @extends('layouts.header')
+@include('sweetalert::alert')
+
+
 <div class="row">
-    <div class="col-xl-6 col-md-6">
+    <div class="col-xl-8 col-md-6">
         <div class="card mini-stat m-b-30">
             <div class="p-3 bg-danger text-white">
                 <div class="mini-stat-icon">
                     <i class="mdi mdi-cube-outline float-right mb-0"></i>
                 </div>
-                <h6 class="text-uppercase mb-0">My Blogs</h6>
+                <h6 class="text-uppercase mb-0">My published Blog</h6>
+                <button type="button" class="btn btn-danger waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="ion-plus-circled"> Add New Blog </i></button>
             </div>
             <div class="card-body">
-                <div class="border-bottom pb-4">
-                    <span class="badge badge-success"> +11% </span> <span class="ml-2 text-muted">All Blog</span>
-                </div>
-                <div class="mt-4 text-muted">
-                    <div class="float-right">
-                        <p class="m-0">viewed: 1325</p>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Full Contet</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                {{Session::get('id')}}
+                            @foreach ($dat as  $valu)
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>{{$valu->title}}</td>
+                                <td>{{$valu->content}}</td>
+                                <td width='150'>
+                                        <form action="{{ route('delete',$valu->id )}}" method="POST">  
+                                        
+                                            @csrf
+
+                                            @method('DELETE')
+                        
+                              
+                        
+                                            <button type="submit" onclick='return confirm("Are you sure you want to delete this item?")' class="btn btn-danger"><i class="ion-close-circled"></i></button>
+                                            <a class="btn btn-primary" href=""><i class="ion-compose"></i></a>
+
+
+
+
+                                    </form>
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                                  
+                              @endforeach
+                               
+                        </table>
                     </div>
-                    <h5 class="m-0">1456<i class="mdi mdi-arrow-up text-success ml-2"></i></h5>
-                    
                 </div>
-            </div>
+            
         </div>
     </div>   
     <div class="col-xl-3 col-md-6">
@@ -60,4 +98,52 @@
     </div>
 </div>
 <!-- end row -->
+<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Article  Registration</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+             
+             <form action="{{'registerArticle'}}" method='POST'>
+               
+            @csrf
+              <div class="form-group">
+               <label>Title</label>
+               <div>
+                <input  type='hidden'  name='user_id' value="{{Auth::user()->id}}">
+                   <textarea  class="form-control" rows="2"  name='title'></textarea>
+                   <span class="text-danger">@error('title'){{$message.old('title')}}
+                    @enderror</span>
+               </div>
+            </div>
+                 <div class="form-group">
+                     <label>Content</label>
+                     <div>
+                         <textarea required class="form-control" rows="4" name='content'></textarea>
+                         <span class="text-danger">@error('content'){{$message.old('content')}}</span>
+                            @enderror</span>
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <div>
+                         <button type="submit" class="btn btn-primary waves-effect waves-light">
+                             <i class="fa fa-save" aria-hidden="true">Save</i>
+                         </button>
+                         <button type="reset" class="btn btn-secondary waves-effect m-l-5">
+                             Cancel
+                         </button>
+                     </div>
+                 </div>
+             </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 @endsection
