@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,10 @@ use App\Http\Controllers\ArticleController;
 Route::get('/', function () {
     return view('welcome');
 });
+// Authonticated Middleware
+Route::middleware(['auth'])->group(function(){
 
+    //Articles Route
 Route::get('/articles', [ArticleController::class, 'index'])->name('articlesIndex');
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('articlesCreate');
 Route::post('/articles', [ArticleController::class, 'store'])->name('articlesStore');
@@ -26,6 +30,10 @@ Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('art
 Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articlesUpdate');
 Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articlesDestroy');
 
+
+});
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\UserController::class, 'index'])->name('home');

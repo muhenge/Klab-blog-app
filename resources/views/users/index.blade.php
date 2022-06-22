@@ -5,37 +5,32 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Aricles') }}</div>
+                <div class="card-header">
+                    <h3 class="card-title"><h3 style="float:left">List of Users</h3>
+                </div>
 
                 <div class="card-body">
                    <table class="table table-condensed table-hover">
                     <thead>
                         <tr>
                             <th>N <sup>o</sup></th>
-                            <th>Titile</th>
-                            <th>Body</th>
-                            <th>Action</th>
+                            <th>Username</th>
                         </tr>
                     </thead>
                     <tbody>
                        @php
                             $i=1;
                        @endphp
-                        @forelse ($articles as $article)
+                        @forelse ($users as $user)
                         <tr>
                             <td>{{ $i }}</td>
                             <td>
-                                {{ $article->title }}
+                                {{ $user->username }}
                             </td>
-                            <td>
-                                {{ $article->content }}
-                            </td>
-                            <td>Action</td>
-                        </tr>
                         @empty
                         <tr>
-                            <td colspan="4">
-                                <center><h5 style="color:red; size:24px;">No Articles found in database.</h5></center>
+                            <td colspan="2">
+                                <center><h5 style="color:red; size:24px;">No user found in database.</h5></center>
                             </td>
                         </tr>
                         @endforelse
