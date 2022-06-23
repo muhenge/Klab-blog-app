@@ -18,12 +18,12 @@ class formController extends Controller
         'Description'=>'required|max:400',
         'image'=>'required|mimes:jpeg,bmp,png,jpg'
        ]);
-       $image=$request->name. '.'.$request->image->extension();
-       $request->image->move(public_path('images'),$image);
+       $image=$request->file('image')->store('image');
+       
        $blogs=new blog();
        $blogs->title=$request->title;
        $blogs->Description=$request->Description;
-       $blogs->image=$request->image;
+       $blogs->image=$image;
        $blogs->user_id=auth()->user()->id;
 
       $blogs->save();

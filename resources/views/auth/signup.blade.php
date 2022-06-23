@@ -74,6 +74,7 @@
             <div>
             <input class="names" type="email" id="names" placeholder="enter your email" name="email"><br>
         </div>
+        
             <div>
             <label for="names">password</label>
         </div>

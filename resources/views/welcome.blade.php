@@ -36,12 +36,12 @@
             height:30px;
            }
            .blogtitle{
-            margin-left:33rem;
+            margin-left:10rem;
             margin-top:30px;
             font-family: 'Abril Fatface', cursive;
            }
            .blogdescript{
-            margin-left:33rem;
+            margin-left:10rem;
             font-family: 'Assistant', sans-serif;
             margin-right:5rem;
            }
@@ -57,6 +57,9 @@
          }
          .searchz:hover{background-color: #2d3748;
                         color:white;}
+                        .container{
+                            display:flex;
+                        }
         </style>
     </head>
     <body class="antialiased">
@@ -92,9 +95,15 @@
                 </form>
       
             @foreach ($searchField as $td)
-                       <h1 class="blogtitle"> {{ $td->title }}</td></h1>
+            <div class="container">
+                <div class="iamge"> <img src="/storage/{{$td->image}}" alt="no image found" width="300" height="200"></div>
+            <div class="contents">
+                <h1 class="blogtitle"> {{ $td->title }}</td></h1>
                         <h4 class="blogdescript"> {{ $td->description }}</td></h4>
                        <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>
+            </div>
+                       
+            </div>
              @endforeach
               
       

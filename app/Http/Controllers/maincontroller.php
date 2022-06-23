@@ -19,7 +19,8 @@ class maincontroller extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|unique:users|max:25|min:3',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|max:10'
+            'password' => 'required|min:6|max:10',
+            
         ]);
         $User = new User;
         $User->name=$request->name;
@@ -27,7 +28,7 @@ class maincontroller extends Controller
         $User->password=Hash::make($request->password);
        $save=$User->save();
        
-      // return redirect('/login');
+       return redirect('/login');
        if ($save) {
         return redirect()
             ->back()
