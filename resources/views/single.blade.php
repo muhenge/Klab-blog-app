@@ -67,10 +67,7 @@
                 <a class="navbar-brand" href="/login">Blog</a>
                 @if (auth()->user())
                     <a class="navbar-brand" href="#">{{ auth()->user()->name }}</a>
-                    <form action="/logout" method="POST">
-                        @csrf
-                    <button type="submit">logout</button>
-                    </form>
+                    <a class="navbar-brand" href="/logout">logout</a>
                     @else
                     <a class="navbar-brand" href="/login">login</a>
                 @endif
@@ -85,13 +82,10 @@
         </div>
         </div>
             <div>
-                <div class="searchn"> <form action="{{route('search')}}" method="GET">
-                    @csrf
-                <input type="text" name="search" placeholder="search Blog" class="searchbig">
-                <button type="submit" class="searchz">search</button>
+              
                 </form>
       
-            @foreach ($searchField as $td)
+            @foreach ($posts as $td)
                        <h1 class="blogtitle"> {{ $td->title }}</td></h1>
                         <h4 class="blogdescript"> {{ $td->description }}</td></h4>
                        <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>

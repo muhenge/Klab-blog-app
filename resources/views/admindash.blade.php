@@ -36,7 +36,7 @@
             height:30px;
            }
            .blogtitle{
-            margin-left:33rem;
+            margin-left:-6rem;
             margin-top:30px;
             font-family: 'Abril Fatface', cursive;
            }
@@ -45,21 +45,14 @@
             font-family: 'Assistant', sans-serif;
             margin-right:5rem;
            }
-           .searchbig{
-            margin-top:20px;
-            margin-left:10rem;
-            width:320px;
-            height:50px;
-           }
-         .searchz{
-            width:320px;
-            height:50px;
-         }
+           
+         
          .searchz:hover{background-color: #2d3748;
                         color:white;}
         </style>
     </head>
     <body class="antialiased">
+       
         <div class="navbar-fixed">
             <nav class="navbar navbar-expand-lg navbar-light bg-light mx-1/2">
                 <div class="bar">
@@ -67,36 +60,19 @@
                 <a class="navbar-brand" href="/login">Blog</a>
                 @if (auth()->user())
                     <a class="navbar-brand" href="#">{{ auth()->user()->name }}</a>
-                    <form action="/logout" method="POST">
-                        @csrf
-                    <button type="submit">logout</button>
-                    </form>
+                    <a class="navbar-brand" href="/logout">logout</a>
                     @else
                     <a class="navbar-brand" href="/login">login</a>
                 @endif
-             <a href="/login" class="new">Create a blog</a></div>
-        
-            <div class="searchn"> <form action="{{route('search')}}" method="GET">
-                @csrf
-            <input type="text" name="search" placeholder="search" class="search">
-            <button type="submit" class="searchs">search</button>
-            </form>
-        </nav>
-        </div>
-        </div>
-            <div>
-                <div class="searchn"> <form action="{{route('search')}}" method="GET">
-                    @csrf
-                <input type="text" name="search" placeholder="search Blog" class="searchbig">
-                <button type="submit" class="searchz">search</button>
-                </form>
+           
+           <div class="users">
       
-            @foreach ($searchField as $td)
-                       <h1 class="blogtitle"> {{ $td->title }}</td></h1>
-                        <h4 class="blogdescript"> {{ $td->description }}</td></h4>
-                       <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>
+          @foreach ($users as $user)
+                      <a href="/single"> <h3 class="blogtitle"> {{ $user->name }}</h2></a>
+                        
+        <div style="margin-left:34rem;"> <a href="delete/{{$user->id}}">Delete</a><a href="Edit/{{$user->id}">Edit</a></div>
              @endforeach
-              
+            </div>
       
     </body>
 </html>

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Resources\views\auth\login;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Resources\views\auth\login;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class maincontroller extends Controller
@@ -23,7 +24,7 @@ class maincontroller extends Controller
         $User = new User;
         $User->name=$request->name;
         $User->email=$request->email;
-        $User->password=$request->password;
+        $User->password=Hash::make($request->password);
        $save=$User->save();
        
       // return redirect('/login');
@@ -43,20 +44,29 @@ class maincontroller extends Controller
             'email'=>'required|email',
             'password'=>'required|max:10|min:5'
         ]);
-        $userinfo=User::where('email',$request->email)->first();
-        if(!$userinfo){
-            return redirect()->back()->with('error','Sorry..! your email is not valid');
+
+        if(auth()->attempt(array('email'=> $request->email,'password'=>$request->password))){
+            return redirect('/new');
+
+        }else{
+            
+            return redirect()->back()->with('errorer','password is incorrect');
         }
+
+        // $userinfo=User::where('email',$request->email)->first();
+        // if(!$userinfo){
+        //     return redirect()->back()->with('error','Sorry..! your email is not valid');
+        // }
     
-            else{
-                if($userinfo->password==$request->password){
-                    session::put('user',$userinfo->name);
-                    return redirect('/new');
-                }
-                else{
-                    return redirect()->back()->with('errorer','password is incorrect');
-                }
-            }
+        //     else{
+        //         if($userinfo->password==$request->password){
+        //             session::put('user',$userinfo->name);
+        //             return redirect('/new');
+        //         }
+        //         else{
+        //             return redirect()->back()->with('errorer','password is incorrect');
+        //         }
+        //     }
         
     }
 }

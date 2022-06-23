@@ -49,7 +49,7 @@
         <form class="regform" action="{{route('create')}}" method="POST" enctype="multipart/form-data">
             @if(Session::has('user'))
             <div style="color:green;">
-              <div style="padding-left:40rem;margin-top:-50px;"> <b>{{Session::get('user')}}<b></div>
+              <div style="padding-left:40rem;margin-top:-50px;"> <b>{{ auth()->user()->name}}<b></div>
             @endif
            
         <h2>Create a new blog</h2>
