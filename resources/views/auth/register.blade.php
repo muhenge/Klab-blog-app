@@ -30,6 +30,7 @@
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus>
+                                <input id="profile" type="hidden" class="form-control" name="profile" value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU">
 
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">

@@ -64,12 +64,22 @@
                                 </li>
                             @endif
                         @else
+                        <div style="display: flex; flex-direction: row ;">
+                            <div style="width:60px; height:60px;">
+                                <img style="width:50px; height:50px; border-radius: 20px; margin-bottom: -2rem;" src="{{ $user->profile }}" alt="profile">
+                            </div>
+                            <div>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }}
-                                </a>
+                               
+                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     {{ Auth::user()->username }}
+                                 </a>
+                                
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('userShow',Auth::user()->id) }}">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -81,6 +91,8 @@
                                     </form>
                                 </div>
                             </li>
+                        </div>
+                    </div>
                         @endguest
                     </ul>
                 </div>
