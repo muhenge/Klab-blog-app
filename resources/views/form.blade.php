@@ -1,8 +1,15 @@
 <!DOCTYPE html>
  <head> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,500&display=swap" rel="stylesheet">
+    <!-- Styles -->
     <style>
         .regform{
-            margin:15rem;
+            margin-top:0.5rem;
+            margin-left:15rem;
             padding:4rem;
         }
         .formInput{
@@ -43,16 +50,50 @@
                 background-color: blue;
                 color:white;
             }
-        </style>
+            body {
+                font-family: 'Nunito', sans-serif;}
+            .bar {
+            margin-left:40rem;
+            padding-left:20px;
+            display:flex;
+           }
+           .logout{
+            margin-left:1rem;
+           }
+           
+</style>
  </head>    
 <body>
+    <body class="antialiased">
+        <div class="navbar-fixed">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mx-1/2">
+                <div class="bar">
+                <a class="navbar-brand" href="/">Home</a>
+               
+                @if (auth()->user())
+                <a class="navbar-brand" href="/">Blog</a>
+                <a href="/new" class="new" style="margin-top:10px;">Create a blog</a></div>
+                <img src="/storage/{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="margin-left:10px;border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                    <button type="submit" class="logout">logout</button>
+                    </form>
+                    @else
+                    <a class="navbar-brand" href="/login">login</a>
+                    <a href="/login" class="new" style="margin-top:10px;">Create a blog</a>
+                    <a class="navbar-brand" href="/login">Blog</a>
+
+                @endif
+        </nav>
+        </div>
+        </div>
         <form class="regform" action="{{route('create')}}" method="POST" enctype="multipart/form-data">
             @if(Session::has('user'))
             <div style="color:green;">
               <div style="padding-left:40rem;margin-top:-50px;"> <b>{{ auth()->user()->name}}<b></div>
             @endif
            
-        <h2>Create a new blog</h2>
+        <h2 style="font-family: 'Abril Fatface', cursive;">Create a new blog</h2>
         @csrf
         <div class="formInput">
             <div>

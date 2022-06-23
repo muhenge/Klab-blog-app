@@ -22,9 +22,11 @@ class maincontroller extends Controller
             'password' => 'required|min:6|max:10',
             
         ]);
+        $profile=$request->file('profile')->store('image');
         $User = new User;
         $User->name=$request->name;
         $User->email=$request->email;
+        $User->profile=$profile;
         $User->password=Hash::make($request->password);
        $save=$User->save();
        

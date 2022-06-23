@@ -45,7 +45,7 @@
         </style>
  </head>    
 <body>
-        <form class="regform" action="{{route('save')}}" method="POST">
+        <form class="regform" action="{{route('save')}}" method="POST" enctype="multipart/form-data">
 
             @if(Session::has('success'))
                 <div style="color:yellowgreen;background-color:rgb(205, 184, 225);">
@@ -74,6 +74,9 @@
             <div>
             <input class="names" type="email" id="names" placeholder="enter your email" name="email"><br>
         </div>
+        
+            Upload profie:<input  type="file"  name="profile"><br>
+        
         
             <div>
             <label for="names">password</label>

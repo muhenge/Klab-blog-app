@@ -8,6 +8,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\singleController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ProfileController;
 use App\Models\todos;
 use App\Http\Controllers\searchcontroller;
 
@@ -38,3 +39,4 @@ Route::group(['middleware'=>['auth']],function(){
 });
 Route::get('/single',[singlecontroller::class,'displayone']);
 Route::post('/logout',[SessionController::class,'destroy']);
+Route::get('/profile',[ProfileController::class,'userprofile']);

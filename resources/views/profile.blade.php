@@ -21,46 +21,38 @@
             body {
                 font-family: 'Nunito', sans-serif;}
             .bar {
-            margin-left:30rem;
+            margin-left:40rem;
             padding-left:20px;
-            display:flex;
            }
-           .search{
-            padding-left:10px;
-            margin-left:30px;
-            width:200px;
-            height:30px;
-            
+           span{
+            color:blue;
+            font-size: 2.6rem;
+            font-weight: bolder;
+            margin-left:20rem;
            }
-           .searchs{
-            width:100px;
-            height:30px;
+           .profile{
+            border:burlywood 3px solid;
+            margin-left:18rem;
+            margin-right:10rem;
            }
            .blogtitle{
-            margin-left:10rem;
+            margin-left:17rem;
             margin-top:30px;
             font-family: 'Abril Fatface', cursive;
            }
            .blogdescript{
-            margin-left:10rem;
+            margin-left:17rem;
             font-family: 'Assistant', sans-serif;
             margin-right:5rem;
            }
-           .searchbig{
-            margin-top:20px;
-            margin-left:10rem;
-            width:320px;
-            height:50px;
-           }
-         .searchz{
-            width:320px;
-            height:50px;
-         }
-         .searchz:hover{background-color: #2d3748;
-                        color:white;}
-                        .container{
-                            display:flex;
-                        }
+           
+        .container{
+            display:block;
+             }
+             .iamge{
+                margin-left: 17rem;
+                margin-top:4rem;
+                }
         </style>
     </head>
     <body class="antialiased">
@@ -69,51 +61,34 @@
                 <div class="bar">
                 <a class="navbar-brand" href="/">Home</a>
                 
-               </div>
                 @if (auth()->user())
                 <a class="navbar-brand" href="/">Blog</a>
-                <a href="/new" class="new" style="margin-top:7px; padding-right:6px;">Create a blog</a>
-                <img src="/storage/{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
+                    <a class="navbar-brand" href="#">{{ auth()->user()->name }}</a>
                     <form action="/logout" method="POST">
                         @csrf
-                    <button type="submit" style="margin-top:6px;">logout</button>
+                    <button type="submit">logout</button>
                     </form>
                     @else
                     <a class="navbar-brand" href="/login">login</a>
-                    <a class="navbar-brand"  href="/login" class="new" style="margin-top:4px; padding-right:6px;">Create a blog</a>
-                    <a class="navbar-brand" href="/login">Blog</a>
                 @endif
-             
-        
-            <div class="searchn"> <form action="{{route('search')}}" method="GET">
-                @csrf
-            <input type="text" name="search" placeholder="search" class="search">
-            <button type="submit" class="searchs">search</button>
-            </form>
-        </nav>
-        </div>
-        </div>
-            <div>
-                <div class="searchn"> <form action="{{route('search')}}" method="GET">
-                    @csrf
-                <input type="text" name="search" placeholder="search Blog" class="searchbig">
-                <button type="submit" class="searchz">search</button>
-                </form>
-      
-            @foreach ($searchField as $td)
+                </div>
+            </nav>
+              <div class="profile">
+             <span>User Profile</span>
+            @foreach ($users as $td)
             <div class="container">
-                <div class="iamge"> <img src="/storage/{{$td->image}}" alt="no image found" width="300" height="200"></div>
+                <div class="iamge"> <img style="border:3px solid darkgray;"src="/storage/{{$td->profile}}" alt="no image found" width="300" height="200"></div>
             <div class="contents">
-                <h1 class="blogtitle"> {{ $td->title }}</td></h1>
-                        <h4 class="blogdescript"> {{ $td->description }}</td></h4>
+                <h4 class="blogtitle"> User name: {{ $td->name }}</td></h4>
+                        <h5 class="blogdescript">Email: {{ $td->email }}</td></h5>
                         @if(auth()->user())
                        <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>
-                         @endif
+             @endif
             </div>
                        
             </div>
              @endforeach
               
-      
+            </div>
     </body>
 </html>
