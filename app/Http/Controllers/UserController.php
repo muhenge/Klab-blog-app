@@ -35,7 +35,11 @@ class UserController extends Controller
 
         if($data->hasFile('profile'))
         {
-                    $path = $data->file('profile')->store('public/images');
+            $image = $data->file('profile');
+            $name = $data->file('profile')->getClientOriginalName();
+            $destinationPath = 'images/';
+            $profileImage = $data->profile->getClientOriginalName();
+            $image->move($destinationPath, $profileImage);
                     $name = $data->file('profile')->getClientOriginalName();
                     $user->profile = $name;
                 }
