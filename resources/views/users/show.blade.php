@@ -11,7 +11,14 @@
                     
                     <table border="0" cellpadding="7px;">
                         <tr>
-                            <td rowspan="3" width="130px;"><img width="120px" height="130px" src="{{ $user->profile }}" alt="profile"></td>
+                            <td rowspan="3" width="130px;">
+                                @if (Auth()->user()->profile != 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU')
+                                <img width="120px" height="130px" src="/images/{{ $user->profile }}" alt="profile">
+                            @else
+                            <img width="120px" height="130px" src="{{ $user->profile }}" alt="profile">
+                            @endif
+                            
+                        </td>
                             <td><h4><b>Names</b></h4></td><td><h4>{{ $user->name }}</h4></td>
                         </tr>
                         <tr>

@@ -26,9 +26,9 @@
             {{ Auth::user()->email }}
             @endauth
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                
+                    <h2>{{ config('app.name', 'Laravel') }}</h2>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,7 +66,13 @@
                         @else
                         <div style="display: flex; flex-direction: row ;">
                             <div style="width:60px; height:60px;">
-                                <img style="width:50px; height:50px; border-radius: 20px; margin-bottom: -2rem;" src="{{ $user->profile }}" alt="profile">
+                               @auth
+                               @if (Auth()->user()->profile != 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU')
+                               <img style="width:50px; height:50px; border-radius: 20px; margin-bottom: -2rem;" src="/images/{{ Auth()->user()->profile }}" alt="profile">
+                               @else
+                               <img style="width:50px; height:50px; border-radius: 20px; margin-bottom: -2rem;" src="{{ Auth()->user()->profile }}" alt="profile">
+                               @endif
+                               @endauth
                             </div>
                             <div>
                             <li class="nav-item dropdown">

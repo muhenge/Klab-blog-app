@@ -15,6 +15,7 @@ class ArticleController extends Controller
     {
         $user = Auth()->user()->id;
         $articles = Article::all()->where('user_id', $user);
+        // return($articles);
         return view('articles.index', compact('articles'));
     }
 

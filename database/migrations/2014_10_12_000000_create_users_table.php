@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('username')->required()->unique();
             $table->string('email')->unique();
-            $table->text('profile')->default('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU');
+            $table->string('profile')->default('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

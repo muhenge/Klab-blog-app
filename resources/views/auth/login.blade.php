@@ -5,9 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">
+                    @if (auth()->user())
+                    {{ __("You're Already Loggedin") }}
+                    @else
+                    {{ __('Login') }}
+                    @endif
+                </div>
 
                 <div class="card-body">
+                    @if (!auth()->user())
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -65,6 +72,8 @@
                             </div>
                         </div>
                     </form>
+                    
+                    @endif
                 </div>
             </div>
         </div>

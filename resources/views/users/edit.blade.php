@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('userUpdate', $user->id) }}">
+                    <form method="POST" action="{{ route('userUpdate', $user->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
 
@@ -55,10 +55,15 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Profile') }}</label>
+                            <label for="profile" class="col-md-4 col-form-label text-md-end">{{ __('Profile') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control" name="profile">
+                                <input type="file" class="form-control" value="{{ $user->profile }}" name="profile">
+                                @error('profile')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
                        
