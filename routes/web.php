@@ -9,6 +9,7 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\singleController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\editProfileController;
 use App\Models\todos;
 use App\Http\Controllers\searchcontroller;
 
@@ -34,9 +35,9 @@ Route::Post('/save',[maincontroller::class,'save'])->name('save');
 Route::Post('/check',[maincontroller::class,'check'])->name('check');
 Route::get('/search',[searchcontroller::class,'search'])->name('search');
 Route::get('/admin',[adminController::class,'admin']);
-Route::group(['middleware'=>['auth']],function(){
-   // Route::get('/logout','logoutController@perform')->name('logout.perform');
-});
+
 Route::get('/single',[singlecontroller::class,'displayone']);
 Route::post('/logout',[SessionController::class,'destroy']);
 Route::get('/profile',[ProfileController::class,'userprofile']);
+Route::get('/editprofile/{user}',[editProfileController::class,'editprofile']);
+Route::patch('/{user}/update',[editProfileController::class,'update']);

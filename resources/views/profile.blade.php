@@ -82,7 +82,7 @@
                 <h4 class="blogtitle"> User name: {{ $td->name }}</td></h4>
                         <h5 class="blogdescript">Email: {{ $td->email }}</td></h5>
                         @if(auth()->user())
-                       <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>
+                       <div style="margin-left:34rem;"> <a href="delete/{{auth()->user()->id}}">Delete</a><a href="/{{ $td->id }}/editprofile">Edit</a></div>
              @endif
             </div>
                        

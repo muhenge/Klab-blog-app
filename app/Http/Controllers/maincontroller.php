@@ -34,7 +34,7 @@ class maincontroller extends Controller
        if ($save) {
         return redirect()
             ->back()
-            ->with('success', 'Your message has been sent successfully!');
+            ->with('success', 'your account has been created successfully!');
     }
     
     return redirect()

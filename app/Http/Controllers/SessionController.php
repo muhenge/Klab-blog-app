@@ -8,6 +8,6 @@ class SessionController extends Controller
 {
   public function destroy(){
     auth()->logout();
-    return redirect('/')->with('Good bye!');
+    return redirect('/')->with('success','Good bye!');
   }
 }

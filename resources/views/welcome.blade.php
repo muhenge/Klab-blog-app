@@ -60,6 +60,7 @@
                         color:white;}
                         .container{
                             display:flex;
+                            padding-top:30px;
                         }
         </style>
     </head>
