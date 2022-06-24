@@ -17,6 +17,7 @@
         <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/plugins/summernote/summernote-bs4.css')}}" rel="stylesheet" />
 
     </head>
 
@@ -109,7 +110,7 @@
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
-                                        <img src="{{asset('assets/images/profile.png')}}" alt="user" class="rounded-circle">
+                                        <img src="/image/{{Auth::user() ->picture }}" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -121,12 +122,15 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>
+                                        <a class="dropdown-item" href="{{ 'profile' }}"><i class="mdi mdi-account-settings-variant "></i>Change Profile</a>
+                                        
                                     </div>
                                   
                                     
 
                                 
                                 </li>
+                                
 
                             </ul>
 

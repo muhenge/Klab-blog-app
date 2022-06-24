@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('title');
             $table->text('content');
             $table->integer('user_id');
+            $table->text('picture')->unique;
             $table->timestamps();
         });
     }

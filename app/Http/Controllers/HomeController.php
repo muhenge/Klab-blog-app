@@ -54,11 +54,9 @@ class HomeController extends Controller
         }
        
        
-    }
-   
-
-
-  
-   
-  
+    } 
+    function profile(){
+        $aa=user::all();
+        return view('TestMe.changeprofile',compact('aa'));    // change profile to current
+}
 }

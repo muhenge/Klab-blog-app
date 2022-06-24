@@ -13,7 +13,10 @@ use SweetAlert;
 class ArticleController extends Controller
 
 {
+function index(Request $request) {
 
+    return 'hello';
+}
    
     function articleList($id)
     {
@@ -36,16 +39,24 @@ function store(Request  $request)
     $validator=Validator::make($request->all(),[
         'title'=>'required|regex:/^[a-zA-Z\s]*$/',
         'content'=>'required|string|min:10|max:350',
+        'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         
     ])->validate();
-  
-   
-$data=article::create([
+    // $path = $request->file('picture')->store('public/image');
+    $input = $request->all();
+    if ($image = $request->file('picture')) {
 
-    'title'=>$request->title,
-    'content'=>$request->content,
-    'user_id'=>$request->user_id,
-]);
+        $destinationPath = 'image/';
+
+        $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+
+        $image->move($destinationPath, $profileImage);
+
+        $input['picture'] = "$profileImage";
+
+    }
+
+    article::create($input);
 Alert::toast('Article created successfully', 'success');
 return redirect(route('home'));
 }

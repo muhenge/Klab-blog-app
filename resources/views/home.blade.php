@@ -29,12 +29,17 @@
                             <tbody>
                                
                                 {{Session::get('id')}}
-                                <?php   $aa=0;?>
+                                <?php $aa=0?>
                             @foreach ($dat as  $valu)
 
-                            
+                
                               <tr>
-                                <th scope="row"><?php  echo $aa+=1;?></th>
+                                <th scope="row">{{++$aa}} </th>
+                                <td>
+                                    
+                                    <img src='/image/{{ $valu->picture }}' width="100px"  height='90px'>
+                                
+                                </td>  
                                 <td>{{$valu->title}}</td>
                                 <td>{{$valu->content}}</td>
                                 <td width='150'>
@@ -48,9 +53,6 @@
                         
                                             <button type="submit" onclick='return confirm("Are you sure you want to delete this item?")' class="btn btn-danger"><i class="ion-close-circled"></i></button>
                                             <a class="btn btn-primary" href=""><i class="ion-compose"></i></a>
-
-
-
 
                                     </form>
                                    
@@ -112,7 +114,7 @@
             </div>
             <div class="modal-body">
              
-             <form action="{{'registerArticle'}}" method='POST'>
+             <form action="{{'registerArticle'}}" method='POST'  enctype="multipart/form-data">
                
             @csrf
               <div class="form-group">
@@ -132,6 +134,15 @@
                             @enderror</span>
                      </div>
                  </div>
+
+                 <div class="form-group">
+                    <label>Content Picture</label>
+                    <div>
+                        <input type='file' name='picture'class='form-cotroller' >
+                        <span class="text-danger">@error('picture'){{$message.old('picture')}}</span>
+                           @enderror</span>
+                    </div>
+                </div>
                  <div class="form-group">
                      <div>
                          <button type="submit" class="btn btn-primary waves-effect waves-light">
@@ -148,5 +159,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 
 @endsection

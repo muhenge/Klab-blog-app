@@ -9,7 +9,7 @@
                  <div class="col-xl-5">
                      <div class="text-center mb-5">
                          <h4>Gustave Blogs are</h4>
-                         
+                        
                      </div>
                  </div>
              </div>
