@@ -36,30 +36,17 @@ class UserController extends Controller
         if($data->hasFile('profile'))
         {
             $image = $data->file('profile');
-            $name = $data->file('profile')->getClientOriginalName();
             $destinationPath = 'images/';
             $profileImage = $data->profile->getClientOriginalName();
             $image->move($destinationPath, $profileImage);
-                    $name = $data->file('profile')->getClientOriginalName();
-                    $user->profile = $name;
+            $name = $data->file('profile')->getClientOriginalName();
+            $user->profile = $name;
                 }
 
 
         $user->name = $data->name;
         $user->username = $data->username;
         $user->email = $data->email;
-        // dd($data->profile);
-        // if($data->profile == '')
-        // {
-        //     $user->profile = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU';
-        // }
-        // else
-        // {
-
-        //     dd($data->profile);
-        //     $user->profile = $data->file('profile')->store('images');
-        // }
-        
         $user->save();
         return redirect()->route('userShow',$id)->with('success', 'Information updated successful');
     }

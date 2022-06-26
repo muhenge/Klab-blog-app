@@ -15,7 +15,7 @@
                     <thead>
                         @if (session('success'))
                                <tr>
-                                <td colspan="4">
+                                <td colspan="5">
                                     <div class="alert bg-green">
                                         {{ session('success') }}
                                       </div>
@@ -25,6 +25,7 @@
                         <tr>
                             <th>N <sup>o</sup></th>
                             <th style="width: 18%">Title</th>
+                            <th>Photo</th>
                             <th>Content</th>
                             <th>Action</th>
                         </tr>
@@ -40,6 +41,13 @@
                                 {{ $article->title }}
                             </td>
                             <td>
+                                @if ($article->photo != "")
+                                <img width="70px" height="80px" src="/images/article/{{ $article->photo }}" alt="">
+                                @else
+                                {{ 'No photo' }}
+                                @endif
+                            </td>
+                            <td>
                                 {{ $article->content }}
                             </td>
                             <td style="width: 20%">
@@ -52,7 +60,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <center><h5 style="color:red; size:24px;">No Articles found in database.</h5></center>
                             </td>
                         </tr>

@@ -8,16 +8,26 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('articlesStore') }}" method="POST">
+                    <form action="{{ route('articlesStore') }}" method="POST" enctype="multipart/form-data">
                         @csrf
             
                         <div class="row mb-3">
-                            <label for="name" class="col-md-2 col-form-label text-md-end">title</label>
+                            <label for="name" class="col-md-2 col-form-label text-md-end">Title</label>
                             <div class="col-md-6">
                                 <input type="hidden" value="{{ $user }}" class="form-control" name="user_id">                               
                                 <input type="text" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" name="title">                               
                             </div>
                             @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-2 col-form-label text-md-end">Photo</label>
+                            <div class="col-md-6">                             
+                                <input type="file" value="{{ old('photo') }}" class="form-control @error('photo') is-invalid @enderror" name="photo">                               
+                            </div>
+                            @error('photo')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

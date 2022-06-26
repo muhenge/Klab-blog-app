@@ -15,6 +15,7 @@
                         <tr>
                             <th>N <sup>o</sup></th>
                             <th>Username</th>
+                            <th>Profile</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,13 @@
                                     <a style="text-decoration: none; color:black" href="{{ route('articleTitle', $user->id) }}">
                                     {{ $user->username }}
                                 </a>
+                                </td>
+                                <td>
+                                    @if ($user->profile != 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU')
+                                <img width="70px" height="70px" src="/images/{{ $user->profile }}" alt="profile">
+                            @else
+                            <img width="70px" height="70px" src="{{ $user->profile }}" alt="profile">
+                            @endif
                                 </td>
                                 @php
                                     $i++

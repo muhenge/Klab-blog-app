@@ -15,7 +15,12 @@
                     <thead>
                         
                         <tr>
-                            <th><h1>{{ $articles->title }}</h1></th>
+                            <th>
+                                @if ($articles->photo != "")
+                                <img width="150px" height="170px" src="/images/article/{{ $articles->photo }}" alt="">
+                                @endif
+
+                                <h1>{{ $articles->title }}</h1></th>
                         </tr>
                         <tr>
                             <th><h3>{{ $articles->content }}</h3></th>

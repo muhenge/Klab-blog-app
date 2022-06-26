@@ -15,7 +15,6 @@ class ArticleController extends Controller
     {
         $user = Auth()->user()->id;
         $articles = Article::all()->where('user_id', $user);
-        // return($articles);
         return view('articles.index', compact('articles'));
     }
 
@@ -29,14 +28,33 @@ class ArticleController extends Controller
     {
         $message = validator::make($data->all(),[
             'title' =>'required|max:75|regex:/^[a-zA-Z\s]*$/',
+            'photo' =>'image|mimes:png,jpg,jpeg,gif|max:2048',
             'content'=>'required|string',
         ])->validate();
 
-        Article::create([
-            'title' => $data['title'],
-            'content' =>$data['content'],
-            'user_id' =>$data['user_id'],
-        ]);
+        if($data->hasFile('photo'))
+        {
+            Article::create([
+                'title' => $data['title'],
+                'content' =>$data['content'],
+                'photo' => $data->file('photo')->getClientOriginalName(),
+                'user_id' =>$data['user_id'],
+            ]);  
+
+            $image = $data->file('photo');
+            $destinationPath = 'images/article/';
+            $profileImage = $data->photo->getClientOriginalName();
+            $image->move($destinationPath, $profileImage);
+        }
+        else
+        {
+            Article::create([
+                'title' => $data['title'],
+                'content' =>$data['content'],
+                // 'photo' => "",
+                'user_id' =>$data['user_id'],
+            ]);
+        }
         return redirect()->route('articlesIndex')->with('success', 'Article stored successful');
     }
 
