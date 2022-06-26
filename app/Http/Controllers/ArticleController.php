@@ -71,7 +71,22 @@ class ArticleController extends Controller
 
     public function update(Request $data, $id)
     {
+        $message = validator::make($data->all(),[
+            'title' =>'required|max:75|regex:/^[a-zA-Z\s]*$/',
+            'photo' =>'image|mimes:png,jpg,jpeg,gif|max:2048',
+            'content'=>'required|string',
+        ])->validate();
+
         $article = Article::find($id);
+        if($data->hasFile('photo'))
+        {
+            $image = $data->file('photo');
+            $destinationPath = 'images/article/';
+            $profileImage = $data->photo->getClientOriginalName();
+            $image->move($destinationPath, $profileImage);
+            $name = $data->file('photo')->getClientOriginalName();
+            $article->photo = $name;
+                }
         $article->title = $data['title'];
         $article->content = $data['content'];
         $article->save();

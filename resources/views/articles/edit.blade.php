@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div class="card-body">
-                        <form action="{{ route('articlesUpdate',$article->id) }}" method="POST">
+                        <form action="{{ route('articlesUpdate',$article->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                 
@@ -19,6 +19,16 @@
                                     <input type="text" value="{{ $article->title }}" class="form-control @error('title') is-invalid @enderror" name="title">                               
                                 </div>
                                 @error('title')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="name" class="col-md-2 col-form-label text-md-end">Photo</label>
+                                <div class="col-md-6">
+                                    <input type="file" value="{{ $article->photo }}" class="form-control @error('photo') is-invalid @enderror" name="photo">                               
+                                </div>
+                                @error('photo')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
