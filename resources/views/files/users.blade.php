@@ -22,7 +22,7 @@
                     <tbody>
                     @foreach ($results as $result)
                         <tr>
-                            <td>{{ $result->name }}</td>
+                            <td><a href="{{ route('blog.read') }}/{{ $result->id }}"> {{ $result->name }}</a></td>
                             <td>{{ $result->email }}</td>
                             <td>
                                 @if ($result->profile=="null")

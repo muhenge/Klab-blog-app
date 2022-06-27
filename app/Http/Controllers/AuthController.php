@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Mail\SendMail;
 
 class AuthController extends Controller
 {
@@ -58,8 +60,9 @@ class AuthController extends Controller
         $user->profile = "null";
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-
+        Mail::to($request->input('email'))->send(new SendMail($user));
         $user->save(); 
+        
 
         return redirect()->route('login');
     }

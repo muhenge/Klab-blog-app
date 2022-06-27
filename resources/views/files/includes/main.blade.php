@@ -89,7 +89,11 @@
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
-                                        <img src="{{asset('assets/images/users/user-1.jpg')}}" alt="user" class="rounded-circle">
+                                        @if (Auth::user()->profile=="null")
+                                            <img src="{{asset('assets/images/users/user-1.jpg')}}" alt="user" class="rounded-circle">
+                                        @else
+                                            <img src="{{asset(Auth::user()->profile)}}" alt="user" class="rounded-circle">
+                                        @endif
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                                         <a class="dropdown-item" href="{{ route('user.profile') }}"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>

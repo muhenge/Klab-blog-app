@@ -12,11 +12,16 @@
                         <h4 class="card-title font-20 mt-0">{{ $result->title }}</h4>
                         <p class="card-text"><?php echo substr($result->content, 0, 100 )."..."; ?></p>                        
                         <p class="card-text">
-                            <a href="{{ route('view.blog') }}/{{ $result->id }}"><small class="text-muted">Read More</small></a>
+                            <a href="{{ route('view.blog') }}/{{ $result->id }}">Read More</a>
                             <?php
                             if ($result->user_id==Auth::id()){
                                 ?>
-                                <a href="{{ route('blog.form') }}/{{ $result->id }}" class="float-right"><small class="text-muted">Edit</small></a>
+                                <a href="{{ route('blog.form') }}/{{ $result->id }}" class="float-right"><small class="text-primary">Edit</small></a>
+                                <?php
+                            }else {
+                                ?>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<a href="" class=""><i class="dripicons-thumbs-up"></i>&nbsp;<span class="text-muted">330</span> </a>&nbsp;&nbsp;
+                                <a href="" class=""><i class="dripicons-thumbs-down"></i>&nbsp;<span> 3</span></a>
                                 <?php
                             }
                             ?>

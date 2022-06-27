@@ -11,7 +11,7 @@ use App\Models\Blog;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index() 
     {
         $results = DB::table('blogs')->orderBy('id','DESC')->get();
         return view('files.dashboard', compact('results'));
@@ -46,7 +46,6 @@ class MainController extends Controller
         $user->user_id = Auth::id();
         $user->content = $request->input('area');
         $user->image = $path;
-        print_r($user);
 
         $user->save(); 
 
@@ -115,5 +114,11 @@ class MainController extends Controller
                 ->where('id', $request->input('id'))
                 ->delete();
         return redirect(route('dashboard'));
+    }
+
+    public function read($id)
+    {
+        $results = DB::table('blogs')->where('user_id', $id)->get();
+        return view('files.dashboard', compact('results'));
     }
 }   
