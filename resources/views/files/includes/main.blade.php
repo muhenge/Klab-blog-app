@@ -16,6 +16,13 @@
         <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
 
+        
+        <!-- DataTables -->
+        <link href="{{asset('assets/plugins/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/plugins/datatables/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="{{asset('assets/plugins/datatables/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+
     </head>
     
     <body class="fixed-left">
@@ -28,28 +35,26 @@
 
             <!-- ========== Left Sidebar Start ========== -->
             <div class="left side-menu">
-                <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
-                    <i class="ion-close"></i>
-                </button>
-
-                <div class="left-side-logo d-block d-lg-none">
-                    <div class="text-center">
-                        
-                        <a href="index.html" class="logo"><img src="{{asset('assets/images/logo-dark.png')}}" height="20" alt="logo"></a>
-                    </div>
-                </div>
-
                 <div class="sidebar-inner slimscrollleft">
                     
                     <div id="sidebar-menu">
                         <ul>
                             <li class="menu-title">Main</li>
 
-                            <li>
-                                <a href="" class="waves-effect" data-toggle="modal" data-target=".bs-example-modal-center"><i class="fa fa-calendar-plus-o"></i> <span> Add Blogs </span></a>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-broadcast"></i> <span> Manage Blog </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="" class="waves-effect" data-toggle="modal" data-target=".bs-example-modal-center"><i class="fa fa-calendar-plus-o"></i> <span> Add Blogs </span></a>                                        
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('dashboard') }}" class="waves-effect"><i class="dripicons-to-do"></i><span> View Blogs </span> </a>
+                                    </li>
+                                </ul>
                             </li>
+
                             <li>
-                                <a href="" class="waves-effect"><i class="dripicons-to-do"></i><span> View Blogs </span> </a>
+                                <a href="{{ route('users.all') }}" class="waves-effect"><i class="fa fa-users"></i> <span>View users</span></a>
                             </li>
 
                         </ul>
@@ -79,17 +84,15 @@
                             <ul class="list-inline float-right mb-0">
 
                                 <li class="list-inline-item dropdown notification-list">
-                                    {{$users['email']}}
+                                    {{ Auth::user()->email }}
                                 </li>
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
-                                        <img src="assets/images/users/user-1.jpg" alt="user" class="rounded-circle">
+                                        <img src="{{asset('assets/images/users/user-1.jpg')}}" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
+                                        <a class="dropdown-item" href="{{ route('user.profile') }}"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
                                         <a class="dropdown-item" href="logout"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
                                     </div>
                                 </li>
@@ -129,7 +132,45 @@
                             <!-- end row -->
 
                             @yield('content')
-                            
+                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title mt-0 text-primary">Add New Blog</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('blog.save') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <lebel>Title</lebel>
+                                                            <input type="text" class="form-control" name="title" id="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <lebel>Image</lebel>
+                                                            <input type="file" name="image" id="">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <lebel>Content</lebel>
+                                                            <textarea id="elm1" name="area"></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                                    Save Blogs
+                                                                </button>
+                                                                <button type="reset" class="btn btn-danger waves-effect m-l-5" data-dismiss="modal" aria-label="Close">
+                                                                    Cancel
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
 
                         </div><!-- container fluid -->
 
@@ -177,5 +218,54 @@
 <!-- Plugins Init js -->
 <script src="{{asset('assets/pages/form-advanced.js')}}"></script>
 
+
+<!-- Required datatable js -->
+<script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<!-- Buttons examples -->
+<script src="{{asset('assets/plugins/datatables/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/jszip.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/buttons.colVis.min.js')}}"></script>
+<!-- Responsive examples -->
+<script src="{{asset('assets/plugins/datatables/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables/responsive.bootstrap4.min.js')}}"></script>
+
+<!-- Datatable init js -->
+<script src="{{asset('assets/pages/datatables.init.js')}}"></script>
+<!--Wysiwig js-->
+<script src="{{asset('assets/plugins/tinymce/tinymce.min.js')}}"></script>
+
 </body>
 </html>
+
+<script>
+            $(document).ready(function () {
+                if($("#elm1").length > 0){
+                    tinymce.init({
+                        selector: "textarea#elm1",
+                        theme: "modern",
+                        height:100,
+                        plugins: [
+                            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                            "save table contextmenu directionality emoticons template paste textcolor"
+                        ],
+                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+                        style_formats: [
+                            {title: 'Bold text', inline: 'b'},
+                            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+                            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+                            {title: 'Example 1', inline: 'span', classes: 'example1'},
+                            {title: 'Example 2', inline: 'span', classes: 'example2'},
+                            {title: 'Table styles'},
+                            {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+                        ]
+                    });
+                }
+            });
+        </script>

@@ -1,40 +1,29 @@
 @extends('files.includes.main')
 @section ('content')
-    
+
 <div class="row">
-    <div class="col-xl-12">
-        <div class="card m-b-30">
-            <div class="card-body">
-                <h4 class="mt-0 header-title mb-4">List of Blogs</h4>
-                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title mt-0 text-primary">Add New Blog</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <div>
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                Save Blogs
-                                            </button>
-                                            <button type="reset" class="btn btn-danger waves-effect m-l-5" data-dismiss="modal" aria-label="Close">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                <center> <h4>Welcome {{$users['name']}} ,you're logged in! </h4></center>
-            </div>
+    <div class="col-12">
+        <h4 class="m-t-20 m-b-30">Blogs</h4>
+        <div class="card-columns">
+            @foreach($results as $result)
+                <div class="card m-b-30">
+                    <img class="card-img-top img-fluid" style="height:250px" src="{{asset($result->image)}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title font-20 mt-0">{{ $result->title }}</h4>
+                        <p class="card-text"><?php echo substr($result->content, 0, 100 )."..."; ?></p>                        
+                        <p class="card-text">
+                            <a href="{{ route('view.blog') }}/{{ $result->id }}"><small class="text-muted">Read More</small></a>
+                            <?php
+                            if ($result->user_id==Auth::id()){
+                                ?>
+                                <a href="{{ route('blog.form') }}/{{ $result->id }}" class="float-right"><small class="text-muted">Edit</small></a>
+                                <?php
+                            }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

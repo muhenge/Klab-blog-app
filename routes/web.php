@@ -16,5 +16,14 @@ Route::post('/registerNew',[AuthController::class,'register'])->name('newuser');
 //Authenticated Route
 Route::group(['middleware' =>['auth']],function(){
     Route::get('/', [MainController::class,'index'])->name('dashboard');
+    Route::get('/users', [MainController::class,'users'])->name('users.all');
+    Route::post('/changeInfo', [MainController::class,'changeInfo'])->name('user.setting2');
+    Route::post('/changePass', [MainController::class,'changePasscode'])->name('user.password');
+    Route::post('/saveBlog', [MainController::class,'saveBlog'])->name('blog.save');
+    Route::get('/updateForm/{id?}', [MainController::class,'updateForm'])->name('blog.form');
+    Route::post('/updateBlog', [MainController::class,'blogUpdate'])->name('blog.update');
+    Route::post('/deleteBlog', [MainController::class,'blogDelete'])->name('blog.delete');
+    Route::get('/userProfile', [MainController::class,'profile'])->name('user.profile');
+    Route::get('/read/{id?}', [MainController::class,'blog'])->name('view.blog');
     Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 });
