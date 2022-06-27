@@ -26,7 +26,7 @@ class maincontroller extends Controller
         $User = new User;
         $User->name=$request->name;
         $User->email=$request->email;
-        $User->profile=$profile;
+        $User->profile=$uploaded;
         $User->password=Hash::make($request->password);
        $save=$User->save();
        
@@ -49,7 +49,7 @@ class maincontroller extends Controller
         ]);
 
         if(auth()->attempt(array('email'=> $request->email,'password'=>$request->password))){
-            if(auth()->user()->id == 1){
+            if(auth()->user()->id == 2){
                 return redirect('/admin')->with('success','welcome Admin');   
             }
             else{
