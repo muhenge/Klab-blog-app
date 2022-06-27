@@ -31,8 +31,8 @@ class HomeController extends Controller
     {
         $AlertType='success';
 
-        // Alert::toast('Your Data has been deleted!','warning');
-         $data=user::all();
+      
+         $data=DB::select('select * from users where id != '.Auth::user()->id.'');
          // 
 
          $count=1;

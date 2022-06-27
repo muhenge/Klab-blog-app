@@ -6,7 +6,7 @@ use App\Http\Controllers\weetalertController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use  App\Http\Controllers\Auth\RegisterController;
 
 
@@ -24,7 +24,7 @@ use  App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -43,11 +43,12 @@ Route::get('articleList/{id?}',[ App\Http\Controllers\ArticleController::class,'
 Route::get('list',[ UserController::class,'list'])->name('list');
 Route::delete('delete/{id}',[App\Http\Controllers\ArticleController::class,'destroy'])->name('delete');
 Route::post('update1',[UserController::class,'update'])->name('update1');
-
+///readmore routesCallback
+Route::post('readMore/{id?}',[ App\Http\Controllers\ArticleController::class,'readMore'])->name('readMore');
 
 });
-Route::get('code',[App\Http\Controllers\QrcodeController::class,'index'])->name('code');
-
+Route::post('code',[App\Http\Controllers\QrcodeController::class,'index'])->name('code');
+Route::get('sendEmail',[App\Http\Controllers\ArticleController::class,'sendEmail'])->name('sendEmail');
 
 Auth::routes();
 
@@ -58,3 +59,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('aaa',[ App\Http\Controllers\ArticleController::class,'index'])->name('aaa');
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');

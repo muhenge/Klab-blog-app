@@ -65,7 +65,7 @@
                             </li>
 
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-broadcast"></i> <span> Other Week</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-list"></i> <span> Other Week</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="advanced-alertify.html">data</a></li>
                                     
@@ -158,7 +158,7 @@
                                     <div class="float-right page-breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#">Welcome Mr.</a></li>
-                                            <li class="breadcrumb-item active"> {{ Auth::user()->name }}</li>
+                                            <li class="breadcrumb-item active"> <span class="badge badge-success badge-pill float-right"> {{ Auth::user()->name }}</span></li>
                                         </ol>
                                     </div>
                                     <h5 class="page-title">Weekly Blog</h5>
@@ -198,13 +198,6 @@
 
         <!-- skycons -->
         <script src="{{asset('assets/plugins/skycons/skycons.min.js')}}"></script>
-
-        <!-- skycons -->
-        <script src="{{asset('assets/plugins/peity/jquery.peity.min.js')}}"></script>
-
-        <!--Morris Chart-->
-        <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
-        <script src="{{asset('assets/plugins/raphael/raphael-min.js')}}"></script>
 
         <!-- dashboard -->
         <script src="{{asset('assets/pages/dashboard.js')}}"></script>

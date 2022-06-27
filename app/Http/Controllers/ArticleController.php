@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use SweetAlert;
+use  Mail;
+use  App\Mail\TestMail;
 
 class ArticleController extends Controller
 
@@ -37,12 +39,12 @@ function store(Request  $request)
 
     $AlertType='success';
     $validator=Validator::make($request->all(),[
-        'title'=>'required|regex:/^[a-zA-Z\s]*$/',
-        'content'=>'required|string|min:10|max:350',
+        'title'=>'required|regex:/^[a-zA-Z\s]*$/|min:30|max:100',
+        'content'=>'required|string|min:20|max:350',
         'picture'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         
     ])->validate();
-    // $path = $request->file('picture')->store('public/image');
+    
     $input = $request->all();
     if ($image = $request->file('picture')) {
 
@@ -71,7 +73,23 @@ function destroy($id){
     }
     
 }
+function readMore($id){
+    $data=article::find($id);
+    return view('TestMe\userblogmore',compact("data"));
 
+}
+
+public function  sendEmail(){
+
+    $details=[
+        'title' =>'test email sentMessage',
+        'body'=>'test email form  gustave'
+
+    ];
+Mail::to('mukuzigustavus@gmail.com')->send(new TestMail($details));
+return 'email sentMessage';
+
+}
 }
 
 

@@ -15,30 +15,24 @@
              </div>
              <div class="row justify-content-center">
                  <div class="col-xl-10">
+                
+                 
 
                      <div class="row">
-                        @foreach ($data as $value )
+                      <div class="col-lg-6"> <img  src='/image/{{$data->picture}}'width='300px' height='200px'></div>
                          <div class="col-lg-6">
                              <div class="faq-box mb-6">
                                  <div class="faq-ques rounded">
-                                     <h6 class="pb-2"><i class="mdi mdi-help-circle text-primary mr-4 faq-icon"></i> {{$value->title}}</h6>
+                                     <h6 class="pb-2"><i class="mdi mdi-help-circle text-primary mr-4 faq-icon"></i> {{$data->title}}</h6>
                                  </div>
-                                 <p class="text-muted pt-2"> {{substr($value->content,0,161)}}...
-                                    <form  action="{{route('readMore',$value->id)}}" method="POST">
-                                        @csrf
-                                        @method('POST')
-                                        <button type="submit" ><span class="badge badge-success badge-pill">ReadMore</span></button>
-                                        </p>
-                                    </form>
-                                   
-
+                                 <p class="text-muted pt-2"> {{$data->content}}<span class="badge badge-success badge-pill"><i class="mdi mdi-hand-pointing-right" aria-hidden="true"></i></span>
+                                    <span class="badge badge-danger badge-pill">0</span>
+                                   </p>
                              </div>
                          </div>
-                         @endforeach
-                         
-
                             
                      </div>
+          
                  </div>
                  
              </div>

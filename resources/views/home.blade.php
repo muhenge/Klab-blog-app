@@ -21,6 +21,7 @@
                             <thead class="thead-default">
                                 <tr>
                                     <th>#</th>
+                                    <th>Peicture</th>
                                     <th>Title</th>
                                     <th>Full Contet</th>
                                     <th>Action</th>
@@ -129,7 +130,7 @@
                  <div class="form-group">
                      <label>Content</label>
                      <div>
-                         <textarea required class="form-control" rows="4" name='content'></textarea>
+                         <textarea required class="form-control" rows="4" name='content'  id='elm1'></textarea>
                          <span class="text-danger">@error('content'){{$message.old('content')}}</span>
                             @enderror</span>
                      </div>
