@@ -49,7 +49,13 @@ class maincontroller extends Controller
         ]);
 
         if(auth()->attempt(array('email'=> $request->email,'password'=>$request->password))){
-            return redirect('/new');
+            if(auth()->user()->id = 1){
+                return redirect('/admin');   
+            }
+            else{
+                return redirect('/new');
+            }
+            
 
         }else{
             

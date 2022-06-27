@@ -19,4 +19,15 @@ class blog extends Model
     public function User(){
         return $this->belongsTo(User::class);
     }
+
+    static function uploadImage($image,$path='/image/')
+    {
+        $imagename=time().'.'.$image->getClientOriginalExtension();
+        $imagepath=public_path($path);
+        $image->move($imagepath,$imagename);
+        return $path.$imagename;
+    }
+    public static function find($usern){
+        return static::all()->firstWhere('user_id',$usern);
+     }
 }

@@ -48,11 +48,9 @@
     
         
     
-        <form class="regform" action="/{{ $user->id }}/" method="POST" enctype="multipart/form-data">
-
-          
+        <form class="regform" action="/update/{{ $user->id }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('PATCH');
+            @method('post')
         <h2 style="color:blue">Edit user Profile</h2>
         
         <div class="formInput"><br><div>

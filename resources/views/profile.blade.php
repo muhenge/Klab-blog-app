@@ -75,19 +75,19 @@
             </nav>
               <div class="profile">
              <span>User Profile</span>
-            @foreach ($users as $td)
+            
             <div class="container">
-                <div class="iamge"> <img style="border:3px solid darkgray;"src="/storage/{{$td->profile}}" alt="no image found" width="300" height="200"></div>
+                <div class="iamge"> <img style="border:3px solid darkgray;"src="/storage/{{auth()->user()->profile}}" alt="no image" width="300" height="200"></div>
             <div class="contents">
-                <h4 class="blogtitle"> User name: {{ $td->name }}</td></h4>
-                        <h5 class="blogdescript">Email: {{ $td->email }}</td></h5>
+                <h4 class="blogtitle"> User name: {{ auth()->user()->name }}</td></h4>
+                        <h5 class="blogdescript">Email: {{ auth()->user()->email }}</td></h5>
                         @if(auth()->user())
-                       <div style="margin-left:34rem;"> <a href="delete/{{auth()->user()->id}}">Delete</a><a href="/{{ $td->id }}/editprofile">Edit</a></div>
+                       <div style="margin-left:34rem;"> <a href="delete/{{auth()->user()->id}}">Delete</a><a href="/editprofile/{{ auth()->user()->id }}">Edit</a></div>
              @endif
             </div>
                        
             </div>
-             @endforeach
+            
               
             </div>
     </body>

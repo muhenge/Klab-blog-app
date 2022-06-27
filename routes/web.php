@@ -36,8 +36,8 @@ Route::Post('/check',[maincontroller::class,'check'])->name('check');
 Route::get('/search',[searchcontroller::class,'search'])->name('search');
 Route::get('/admin',[adminController::class,'admin']);
 
-Route::get('/single',[singlecontroller::class,'displayone']);
+Route::get('/single/{usern}',[singlecontroller::class,'displayone']);
 Route::post('/logout',[SessionController::class,'destroy']);
 Route::get('/profile',[ProfileController::class,'userprofile']);
 Route::get('/editprofile/{user}',[editProfileController::class,'editprofile']);
-Route::patch('/{user}/update',[editProfileController::class,'update']);
+Route::post('/update/{user}',[editProfileController::class,'update']);

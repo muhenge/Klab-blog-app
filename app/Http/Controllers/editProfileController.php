@@ -11,15 +11,21 @@ class editProfileController extends Controller
    
     return view('editprofile', ['user' => $user]);
  }
- public function update(user $user){
+ public function update(user $user, Request $request){
 
-   $attribute=$user->validate([
-      'name' => 'required|string|unique:users|max:25|min:3',
-      'email' => 'required|email|unique:users',
-      'password' => 'required|min:6|max:10',
-      'profile' =>'required|image'
+   $attribute = $request->validate([
+      'email' => ['required','email','unique:users,email,'.$user->id],
+      'name' => ['required','string','max:25','min:3','unique:users,name,'.$user->id],
+      // 'password' => 'required|min:6|max:10',
+      // 'profile' =>'required|image'
    ]);
- $user->update( $attribute);
- return redirect()->back()->with('success','profile updated successfull');
+
+   $user->name=$request->name;
+   $user->email=$request->email;
+   // $user->profile=$profile;
+   // $user->password=Hash::make($request->password);
+   $user->save();
+
+   return redirect('/profile')->with('success','profile updated successfull');
  }
 }

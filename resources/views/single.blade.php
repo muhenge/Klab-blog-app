@@ -91,7 +91,7 @@
       
             @foreach ($posts as $td)
             <div class="container">
-                <div class="iamge"> <img src="/storage/{{$td->image}}" alt="no image found" width="300" height="200"></div>
+                <div class="iamge"> <img src="{{$td->image}}" alt="no image found" width="300" height="200"></div>
             <div class="contents">
                 <h1 class="blogtitle"> {{ $td->title }}</td></h1>
                         <h4 class="blogdescript"> {{ $td->description }}</td></h4>

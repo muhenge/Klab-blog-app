@@ -24,31 +24,39 @@
             margin-left:40rem;
             padding-left:20px;
            }
-           .search{
-            padding-left:10px;
-            margin-left:30px;
-            width:200px;
-            height:30px;
-            
-           }
-           .searchs{
-            width:100px;
-            height:30px;
-           }
            .blogtitle{
-            margin-left:-6rem;
+            margin-left:19rem;
             margin-top:30px;
             font-family: 'Abril Fatface', cursive;
            }
-           .blogdescript{
-            margin-left:33rem;
-            font-family: 'Assistant', sans-serif;
-            margin-right:5rem;
+           .dashcontents{
+            display:flex;
+            border:#a0aec0 5px solid;
+            width:100%;
+            
            }
-           
+           .aside{
+            padding-top: 3rem;
+            padding-left: 2rem;
+            background-color:#cbd5e0;
+            height:80vh;
+            width:16rem;
+           }
+        .users{
+            background-color: #a0aec0;
+            width:100%;
+           }
+        .headertxt{
+            background-color: #e2e8f0;
+        }
+        h3 a:hover{
+            background-color:#e2e8f0;
+            margin-left:-2rem;
+            padding-right:4.3rem;
+            padding-top:3rem;
+        }
+        
          
-         .searchz:hover{background-color: #2d3748;
-                        color:white;}
         </style>
     </head>
     <body class="antialiased">
@@ -64,15 +72,24 @@
                     @else
                     <a class="navbar-brand" href="/login">login</a>
                 @endif
+                </nav>
+            </div>
            
-           <div class="users">
-      
+             <div class="dashcontents">
+            <div class="aside">
+           <h3 ><a href="/admin">List of users</a></h3>
+           <h5 style="padding-top:3rem;"><a href="/">Home</a></h5>
+           <h5 style="padding-top:3rem;"><a href="/new">Create a blog</a></h5>
+        </div>
+        <div class="users">
+            <div class="headertxt"><h3 style="margin-left:22rem; padding-bottom:2rem;padding-top:2rem;"><b>List of users</b></h3></div>
           @foreach ($users as $user)
-                      <a href="/single"> <h3 class="blogtitle"> {{ $user->name }}</h2></a>
+                      <a href="/single/{{ $user->id }}"> <h3 class="blogtitle"> {{ $user->name }}</h2></a>
                         
-        <div style="margin-left:34rem;"> <a href="delete/{{$user->id}}">Delete</a><a href="Edit/{{$user->id}">Edit</a></div>
+        <div style="margin-left:50rem;margin-top:-23px; padding-right:5rem;"> <a href="delete/{{$user->id}}">Delete</a></div>
              @endforeach
             </div>
+        </div>
       
     </body>
 </html>
