@@ -73,7 +73,7 @@
                 @if (auth()->user())
                 <a class="navbar-brand" href="/">Blog</a>
                 <a href="/new" class="new" style="margin-top:10px;">Create a blog</a></div>
-                <img src="/storage/{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="margin-left:10px;border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
+                <img src="{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="margin-left:10px;border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
                     <form action="/logout" method="POST">
                         @csrf
                     <button type="submit" class="logout">logout</button>

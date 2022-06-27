@@ -25,6 +25,11 @@
         border:2px yellowgreen solid;
         border-radius: 10px;
         margin-left: 20px;}
+        input[type="file"]{
+            border:0px;
+            margin-left:40px;
+            color:blueviolet;
+        }
         input:focus{
             border:0px;
             border-color: beige;
@@ -52,8 +57,20 @@
             @csrf
             @method('post')
         <h2 style="color:blue">Edit user Profile</h2>
-        
-        <div class="formInput"><br><div>
+    </div>
+    
+        <div class="formInput"><br>
+            <div style="margin-left:40px;"> 
+            <img src="{{ $user->profile}}" width="250" height="200" style="margin-top:10px; border:2px yellowgreen solid">
+            </div>
+            <div>
+                <label for="names">Upload profile</label>
+            <br>
+            <div>
+            <input  type="file"  name="profile" value="{{ $user->profile }}" style="margin-top:-10px;">
+            </div>
+            <br>
+        <div>
             <label for="description">UserName</label>
         </div>
             <div>
@@ -63,23 +80,9 @@
             <label for="names">Email</label>
         </div>
             <div>
-            <input class="names" type="email" id="names"  name="email" value="{{ $user->email }}"><br>
+            <input class="names" type="email" id="names"  name="email" value="{{ $user->email }}">
         </div>
-        <div>
-            <label for="names">Upload profile</label>
-        </div>
-            <input  type="file"  name="profile" value="{{ $user->profile }}" style="margin-top:-10px;">
-            <img src="/storage/{{ $user->profile}}" width="40" height="40" style="margin-top:10px;"><br>
-        
-        
-            <div>
-            <label for="names">password</label>
-        </div>
-            <div>
-            <input class="names" type="Password" id="names" name="password" value="{{ $user->password }}"><br>
-        </div>
-         
-            <div><br>
+        <br>
             <button class="button" type="submit">update</button>
         </div><br>
         

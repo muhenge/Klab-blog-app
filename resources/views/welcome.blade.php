@@ -86,7 +86,7 @@
                 @endif
              @if(Session()->has('success'))
              <div>
-               <p> {{ Session()->get('success') }}</p>
+               <p style="color:white;background-color:skyblue;"> {{ Session()->get('success') }}</p>
             </div>
              @endif
         
