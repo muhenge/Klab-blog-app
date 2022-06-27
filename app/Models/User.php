@@ -48,4 +48,11 @@ class User extends Authenticatable
     public function blog(){
         return $this->hasMany(blog::class,'user_id');
     }
+    static function uploadImage($image,$path='/image/')
+    {
+        $imagename=time().'.'.$image->getClientOriginalExtension();
+        $imagepath=public_path($path);
+        $image->move($imagepath,$imagename);
+        return $path.$imagename;
+    }
 }

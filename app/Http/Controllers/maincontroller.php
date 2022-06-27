@@ -22,7 +22,7 @@ class maincontroller extends Controller
             'password' => 'required|min:6|max:10',
             
         ]);
-        $profile=$request->file('profile')->store('image');
+        $uploaded = User::uploadImage($request->file('profile'));
         $User = new User;
         $User->name=$request->name;
         $User->email=$request->email;
@@ -49,11 +49,11 @@ class maincontroller extends Controller
         ]);
 
         if(auth()->attempt(array('email'=> $request->email,'password'=>$request->password))){
-            if(auth()->user()->id = 1){
-                return redirect('/admin');   
+            if(auth()->user()->id == 1){
+                return redirect('/admin')->with('success','welcome Admin');   
             }
             else{
-                return redirect('/new');
+                return redirect('/')->with('success','welcome');
             }
             
 

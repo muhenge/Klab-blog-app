@@ -77,7 +77,7 @@
              <span>User Profile</span>
             
             <div class="container">
-                <div class="iamge"> <img style="border:3px solid darkgray;"src="/storage/{{auth()->user()->profile}}" alt="no image" width="300" height="200"></div>
+                <div class="iamge"> <img style="border:3px solid darkgray;"src="{{auth()->user()->profile}}" alt="no image" width="300" height="200"></div>
             <div class="contents">
                 <h4 class="blogtitle"> User name: {{ auth()->user()->name }}</td></h4>
                         <h5 class="blogdescript">Email: {{ auth()->user()->email }}</td></h5>

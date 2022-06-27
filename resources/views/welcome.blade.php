@@ -74,7 +74,7 @@
                 @if (auth()->user())
                 <a class="navbar-brand" href="/">Blog</a>
                 <a href="/new" class="new" style="margin-top:7px; padding-right:6px;">Create a blog</a>
-                <img src="/storage/{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
+                <img src="{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
                     <form action="/logout" method="POST">
                         @csrf
                     <button type="submit" style="margin-top:6px;">logout</button>
@@ -84,7 +84,11 @@
                     <a class="navbar-brand"  href="/login" class="new" style="margin-top:4px; padding-right:6px;">Create a blog</a>
                     <a class="navbar-brand" href="/login">Blog</a>
                 @endif
-             
+             @if(Session()->has('success'))
+             <div>
+               <p> {{ Session()->get('success') }}</p>
+            </div>
+             @endif
         
             <div class="searchn"> <form action="{{route('search')}}" method="GET">
                 @csrf
