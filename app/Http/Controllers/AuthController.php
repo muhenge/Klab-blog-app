@@ -61,9 +61,10 @@ class AuthController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
 
-        Mail::to($request->input('email'))->send(new SignUp());
-        $user->save(); 
-        
+        Mail::to($request->input('email'))
+            ->cc('gustave@gustave.com')
+            ->send(new SignUp());
+        $user->save();         
 
         return redirect()->route('login');
     }

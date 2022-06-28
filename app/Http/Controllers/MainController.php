@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;  
+use Illuminate\Support\Facades\Crypt;
 use App\Models\Blog;
 
 class MainController extends Controller
 {
     public function index() 
-    {
+    {   
         $results = DB::table('blogs')->orderBy('id','DESC')->get();
         return view('files.dashboard', compact('results'));
     }
@@ -31,7 +32,8 @@ class MainController extends Controller
 
     public function blog($id)
     {        
-        $results = DB::table('blogs')->find($id);
+        $prodID = Crypt::decrypt($id);
+        $results = DB::table('blogs')->find($prodID);
         return view('files.blog', compact('results'));
     }
     public function info()

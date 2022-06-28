@@ -12,7 +12,10 @@
                         <h4 class="card-title font-20 mt-0">{{ $result->title }}</h4>
                         <p class="card-text"><?php echo substr($result->content, 0, 100 )."..."; ?></p>                        
                         <p class="card-text">
-                            <a href="{{ route('view.blog') }}/{{ $result->id }}">Read More</a>
+                            @php 
+                                $prodID= Crypt::encrypt($result->id, 'st'); 
+                            @endphpargument
+                            <a href="{{ route('view.blog',$prodID) }}">Read More</a>
                             <?php
                             if ($result->user_id==Auth::id()){
                                 $data = DB::connection('mysql2')->table("like")->where('blog', $result->id)->count();
