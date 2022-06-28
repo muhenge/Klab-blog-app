@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\user;
 use App\Models\Like;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ArticleEmail;
 
 class ArticleController extends Controller
 {
@@ -63,6 +65,9 @@ class ArticleController extends Controller
                 'user_id' =>$data['user_id'],
             ]);
         }
+        Mail::to("bishomoise@gmail.com")
+        ->send(new ArticleEmail());
+
         return redirect()->route('articlesIndex')->with('success', 'Article stored successful');
     }
 
