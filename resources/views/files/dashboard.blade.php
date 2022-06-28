@@ -15,13 +15,16 @@
                             <a href="{{ route('view.blog') }}/{{ $result->id }}">Read More</a>
                             <?php
                             if ($result->user_id==Auth::id()){
+                                $data = DB::connection('mysql2')->table("like")->where('blog', $result->id)->count();
                                 ?>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ route('blog.lik') }}/{{ $result->id }}" class=""><i class="dripicons-thumbs-up"></i>&nbsp;<span class="text-muted"><?=$data?></span> </a>
                                 <a href="{{ route('blog.form') }}/{{ $result->id }}" class="float-right"><small class="text-primary">Edit</small></a>
                                 <?php
                             }else {
+                                
+                            $data = DB::connection('mysql2')->table("like")->where('blog', $result->id)->count();
                                 ?>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<a href="" class=""><i class="dripicons-thumbs-up"></i>&nbsp;<span class="text-muted">330</span> </a>&nbsp;&nbsp;
-                                <a href="" class=""><i class="dripicons-thumbs-down"></i>&nbsp;<span> 3</span></a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ route('blog.lik') }}/{{ $result->id }}" class=""><i class="dripicons-thumbs-up"></i>&nbsp;<span class="text-muted"><?=$data?></span> </a>
                                 <?php
                             }
                             ?>

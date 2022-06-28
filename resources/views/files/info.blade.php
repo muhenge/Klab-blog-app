@@ -15,6 +15,7 @@
                         <label>Age</label>
                         <div>
                             <input type="text" name="age" value="" class="form-control" required/>
+                            <input type="hidden" name="user" value="{{ Auth::id() }}" class="form-control" required/>
                         </div>
                     </div>
 

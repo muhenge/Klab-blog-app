@@ -44,7 +44,7 @@ class MainController extends Controller
         $validate = $request->validate([
             'age' => ['required'],
             'city' => ['required'],
-            'user' => ['required','unique:information'],
+            'user' => ['required','unique:mysql2.information'],
         ]);
 
         DB::connection('mysql2')->table('information')->insert([
@@ -71,6 +71,25 @@ class MainController extends Controller
         $user->save(); 
 
         return redirect()->route('dashboard');
+    }
+
+    //Insert like in database
+    public function likeBlog($id)
+    {
+        if (DB::connection('mysql2')->table('like')->where('user', Auth::id())->where('blog', $id)->count()==1) {
+            DB::connection('mysql2')->table('like')
+                    ->where('blog', $id)
+                    ->where('user', Auth::id())
+                    ->delete();
+            return redirect()->route('dashboard');
+        }elseif (DB::connection('mysql2')->table('like')->where('user', Auth::id())->where('blog', $id)->count()==0){
+            DB::connection('mysql2')->table('like')->insert([
+                'user' => Auth::id(),
+                'blog' => $id,
+            ]);
+    
+            return redirect()->route('dashboard');
+        }
     }
 
     //Change user info

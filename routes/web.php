@@ -17,6 +17,7 @@ Route::post('/registerNew',[AuthController::class,'register'])->name('newuser');
 Route::group(['middleware' =>['auth']],function(){
     Route::get('/', [MainController::class,'index'])->name('dashboard');
     Route::get('/users', [MainController::class,'users'])->name('users.all');
+    Route::get('/blogs/{id?}', [MainController::class,'likeBlog'])->name('blog.lik');
     Route::post('/changeInfo', [MainController::class,'changeInfo'])->name('user.setting2');
     Route::post('/changePass', [MainController::class,'changePasscode'])->name('user.password');
     Route::post('/saveBlog', [MainController::class,'saveBlog'])->name('blog.save');
