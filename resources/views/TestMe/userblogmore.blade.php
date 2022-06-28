@@ -25,8 +25,16 @@
                                  <div class="faq-ques rounded">
                                      <h6 class="pb-2"><i class="mdi mdi-help-circle text-primary mr-4 faq-icon"></i> {{$data->title}}</h6>
                                  </div>
-                                 <p class="text-muted pt-2"> {{$data->content}}<span class="badge badge-success badge-pill"><i class="mdi mdi-hand-pointing-right" aria-hidden="true"></i></span>
-                                    <span class="badge badge-danger badge-pill">0</span>
+                                 <p class="text-muted pt-2"> {{$data->content}}
+                                    <form action="{{route('store')}}" method='POST'>
+                                        @csrf
+
+                                        <input type="hidden" name="id" value="{{$data->id}}" /> 
+                                        @method('POST')
+                                        <span class="badge badge-success badge-pill"><button type="submit"><i class="mdi mdi-hand-pointing-right" aria-hidden="true"></i></button></span>
+                                    </form>
+                                   
+                            <span class="badge badge-danger badge-pill">{{$like}}</span>
                                    </p>
                              </div>
                          </div>

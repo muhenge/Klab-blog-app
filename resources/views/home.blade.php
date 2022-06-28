@@ -80,7 +80,7 @@
             <div class="card-body">
                 <ul>
                          <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"> <span> List of User </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"> <span> List of User >{{config('app.name')}}</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 @foreach ($data as $value )
                                 <ul class="list-unstyled">
                                     

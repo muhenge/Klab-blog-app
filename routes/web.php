@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use  App\Http\Controllers\Auth\RegisterController;
-
+use  App\Http\Controllers\studentController;
 
 
 
@@ -49,7 +49,9 @@ Route::post('readMore/{id?}',[ App\Http\Controllers\ArticleController::class,'re
 });
 Route::post('code',[App\Http\Controllers\QrcodeController::class,'index'])->name('code');
 Route::get('sendEmail',[App\Http\Controllers\ArticleController::class,'sendEmail'])->name('sendEmail');
-
+Route::get('like',[App\Http\Controllers\likeController::class,'likeAction'])->name('like');
+Route::post('store',[App\Http\Controllers\likeController::class,'store'])->name('store');
+Route::get('st',[App\Http\Controllers\studentController::class,"index"])->name('st');
 Auth::routes();
 
 
@@ -67,3 +69,11 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
  
     return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::get('email-test', function(){
+    $details['email'] = 'karekezigustave@gmail.com';
+    dispatch(new App\Jobs\SendEmailJob($details));
+    dd('done');
+
+});

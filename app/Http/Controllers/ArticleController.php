@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\article;
 use App\Models\User;
+use App\Models\like;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use SweetAlert;
 use  Mail;
 use  App\Mail\TestMail;
-
+use DB;
+use Auth;
 class ArticleController extends Controller
 
 {
@@ -58,7 +60,7 @@ function store(Request  $request)
 
     }
 
-    article::create($input);
+     article::create($input);
 Alert::toast('Article created successfully', 'success');
 return redirect(route('home'));
 }
@@ -73,9 +75,10 @@ function destroy($id){
     }
     
 }
-function readMore($id){
+function readMore($id,Request $request){
     $data=article::find($id);
-    return view('TestMe\userblogmore',compact("data"));
+    $like=DB::table('likes')->where('article_id',$request->id)->count();
+            return view('TestMe\userblogmore',compact("like","data"));  
 
 }
 
@@ -86,7 +89,7 @@ public function  sendEmail(){
         'body'=>'test email form  gustave'
 
     ];
-Mail::to('mukuzigustavus@gmail.com')->send(new TestMail($details));
+Mail::to('mukunzigustavus@gmail.com')->send(new TestMail($details));
 return 'email sentMessage';
 
 }

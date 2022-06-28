@@ -33,7 +33,7 @@ class HomeController extends Controller
 
       
          $data=DB::select('select * from users where id != '.Auth::user()->id.'');
-         // 
+         //$data=User::all();
 
          $count=1;
         $dat=DB::select('SELECT * from  articles where user_id='.Auth::user()->id.'');
