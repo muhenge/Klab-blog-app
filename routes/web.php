@@ -5,6 +5,7 @@ use App\Mail\ArticleEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,9 @@ Route::get('/users', [UserController::class, 'index'])->name('userIndex');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('userEdit');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('userShow');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('userUpdate');
+
+//Like routes
+Route::get('/like', [LikeController::class, 'index'])->name('likeIndex');
 
 });
 

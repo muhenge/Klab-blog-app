@@ -33,7 +33,7 @@
                                             <div class="card-action">
                                                 <p class="read-more"><a href="{{ route("articleContent", $article->id) }}">Read More...</a></p>
                                                 <div class="like"><i class="far fa-thumbs-up">&nbsp;13 </i></div>
-                                                {{-- <p class="dislike"><i class="">&nbsp;13</p> --}}
+                                                {{-- <p class="dislike"><i class="fas fa-thumbs-up">&nbsp;13</p> --}}
                                             </div>
                                         </div>
                                         
