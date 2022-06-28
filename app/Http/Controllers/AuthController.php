@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use App\Mail\SendMail;
+use App\Mail\SignUp;
 
 class AuthController extends Controller
 {
@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         }
  
-        return back()->withErrors([ 
+        return back()->withErrors([  
             'login' => 'Credentials do not match',
         ]);
     }
@@ -60,7 +60,8 @@ class AuthController extends Controller
         $user->profile = "null";
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        Mail::to($request->input('email'))->send(new SendMail($user));
+
+        Mail::to('fake@mail,com')->send(new SignUp());
         $user->save(); 
         
 

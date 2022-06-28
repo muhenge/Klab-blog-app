@@ -25,14 +25,35 @@ class MainController extends Controller
 
     public function profile()
     {
-        $users = Auth::user();
-        return view('files.profile', compact('users'));
+        $results = DB::connection('mysql2')->table('information')->where('user', Auth::id())->limit(1)->get();
+        return view('files.profile', compact('results'));
     }
 
     public function blog($id)
     {        
         $results = DB::table('blogs')->find($id);
         return view('files.blog', compact('results'));
+    }
+    public function info()
+    {        
+        return view('files.info');
+    }
+
+    public function save(Request $request)
+    {
+        $validate = $request->validate([
+            'age' => ['required'],
+            'city' => ['required'],
+            'user' => ['required','unique:information'],
+        ]);
+
+        DB::connection('mysql2')->table('information')->insert([
+            'user' => Auth::id(),
+            'age' => $request->input('age'),
+            'city' => $request->input('city')
+        ]);
+        
+        return redirect()->route('dashboard');
     }
 
     //Insert blog in database

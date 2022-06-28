@@ -56,6 +56,9 @@
                             <li>
                                 <a href="{{ route('users.all') }}" class="waves-effect"><i class="fa fa-users"></i> <span>View users</span></a>
                             </li>
+                            <li>
+                                <a href="{{ route('information') }}" class="waves-effect"><i class="fa fa-file"></i> <span>Add Information</span></a>
+                            </li>
 
                         </ul>
                     </div>

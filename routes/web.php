@@ -26,5 +26,9 @@ Route::group(['middleware' =>['auth']],function(){
     Route::get('/userProfile', [MainController::class,'profile'])->name('user.profile');
     Route::get('/blog/{id?}', [MainController::class,'read'])->name('blog.read');
     Route::get('/read/{id?}', [MainController::class,'blog'])->name('view.blog');
+    Route::get('/information', [MainController::class,'info'])->name('information');
+    Route::post('/saveInfo', [MainController::class,'save'])->name('user.info');
+
+
     Route::get('/logout',[AuthController::class,'logout'])->name('logout');  
 });
