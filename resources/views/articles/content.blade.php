@@ -26,8 +26,27 @@
                             <th><h3>{{ $articles->content }}</h3></th>
 
                         </tr>
-                        <tr><td><a href="" class="fa fa-like">Like</a>
-                        <a href="" class="fa fa-disline">Dislike</a></td></tr>
+                        
+                        <tr><td>
+                            <div class="like">
+                                @if ($user_count == 0)
+                                <a href="{{ route('likeIndex', $articles->id) }}"><i class="far fa-thumbs-up"></i></a>&nbsp; {{ $count }}
+                                @else
+                                <i class="fas fa-thumbs-up"></i></a>&nbsp; {{ $count }}
+                                @endif
+
+                                
+                                @if ($user_count == 0)
+                            <a href="{{ route('dislikeIndex', $articles->id) }}"><i class="far fa-thumbs-down"></i></a>&nbsp; {{ $count2 }}
+                            @elseif ($user_count == 1)
+                                <i class="fas fa-thumbs-down"></i>&nbsp; {{ $count2 }}
+                            @else
+                            <i class="far fa-thumbs-down"></i></a>&nbsp; {{ $count2 }}
+                            @endif
+                        </div>
+
+                        
+                    </td></tr>
                     
                     </thead>
                    </table>

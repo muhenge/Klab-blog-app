@@ -48,7 +48,8 @@ Route::get('/users/{id}', [UserController::class, 'show'])->name('userShow');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('userUpdate');
 
 //Like routes
-Route::get('/like', [LikeController::class, 'index'])->name('likeIndex');
+Route::get('/like/{id}/like', [LikeController::class, 'like'])->name('likeIndex');
+Route::get('/likes/{id}/likes', [LikeController::class, 'Dislike'])->name('dislikeIndex');
 
 });
 

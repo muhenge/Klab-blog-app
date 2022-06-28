@@ -64,6 +64,7 @@ main .container-services{
     color: var(--blue);
     font-size: 14px;
   }
+
   main .container-services .service-body .card .card-action .dislike{
     float: right;
     margin-top: 0.5rem;
