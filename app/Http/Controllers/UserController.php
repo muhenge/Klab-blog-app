@@ -28,7 +28,7 @@ class UserController extends Controller
                 'name' => 'required',
                 'username' => 'required',
                 'email' => 'required|email',
-                'profile' =>'required|image|mimes:png,jpg,jpeg,gif|max:2048',
+                'profile' =>'image|mimes:png,jpg,jpeg,gif|max:2048',
             ]
         );
         $user = user::find($id);

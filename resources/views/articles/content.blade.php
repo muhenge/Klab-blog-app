@@ -26,6 +26,8 @@
                             <th><h3>{{ $articles->content }}</h3></th>
 
                         </tr>
+                        <tr><td><a href="" class="fa fa-like">Like</a>
+                        <a href="" class="fa fa-disline">Dislike</a></td></tr>
                     
                     </thead>
                    </table>

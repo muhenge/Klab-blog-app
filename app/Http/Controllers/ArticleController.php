@@ -18,6 +18,13 @@ class ArticleController extends Controller
         return view('articles.index', compact('articles'));
     }
 
+    public function indexAll()
+    {
+        $articles = Article::all();
+        // return($articles);
+        return view('articles.indexAll', compact('articles'));
+    }
+
     public function create()
     {
         $user = Auth()->user()->id;

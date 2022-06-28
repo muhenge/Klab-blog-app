@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <div id="app">
@@ -41,7 +44,7 @@
                         <a class="nav-link" href="{{ route('userIndex') }}">{{ __("Users") }}</a>
                        </li>
                        <li class="nav-item">
-                        <a class="nav-link" href="{{ route('articlesIndex') }}">{{ __('Articles') }}</a>
+                        <a class="nav-link" href="{{ route('articlesAll') }}">{{ __('Articles') }}</a>
                        </li>
                        
                        
@@ -85,6 +88,9 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('userShow',Auth::user()->id) }}">
                                         {{ __('Profile') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('articlesIndex') }}">
+                                        {{ __('Article') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

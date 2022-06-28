@@ -1,0 +1,79 @@
+:root
+{
+  --color:white;
+  --blue: #17AFDF;
+  --dark:rgba(0, 0, 0, 0.418);
+  --lightblue:rgba(195, 229, 238, 0.33);
+  --black: black;
+}
+
+main .container-services{
+    margin-top: 0rem;
+    margin-left: 0rem;
+    font-size: 22px;
+  }
+  main .container-services .card-service .card-title .service-title{
+    font-size: 30;
+    color: var(--blue);
+    margin-left: 0rem;
+    margin-top: 0rem;
+  }
+
+  main .container-services .service-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  main .container-services .service-body .card .card-title{
+    margin-top: 0.5rem;
+    color: var(--blue);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  main .container-services .service-body .card .card-title .icon{
+    color: var(--blue);
+    font-size: 5px;
+    margin-bottom: 0.5rem;
+  }
+  main .container-services .service-body .card .card-title .icon img{
+    width: 100%;
+    height: 180px;
+  }
+
+  main .container-services .service-body .card{
+    justify-items: center;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
+    border-radius: 0.5rem;
+    background-color:  rgba(0, 0, 0, 0.01);
+    text-align:start;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+  }
+  main .container-services .service-body .card .card-action .read-more{
+    float: left;
+    margin-top: 0.5rem;
+    color: var(--blue);
+    font-size: 14px;
+  }
+  main .container-services .service-body .card .card-action .like{
+    float: right;
+    margin-top: 0.5rem;
+    color: var(--blue);
+    font-size: 14px;
+  }
+  main .container-services .service-body .card .card-action .dislike{
+    float: right;
+    margin-top: 0.5rem;
+    color: var(--blue);
+    font-size: 14px;
+  }
+  main .container-services .service-body .card .card-action p a{
+    text-decoration: none;
+  }
+  main .container-services .service-body .card .card-body{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+  }

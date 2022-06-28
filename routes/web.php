@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\ArticleEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 
@@ -18,11 +20,17 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/send-mail', function () {
+    Mail::to("bishomoise@gmail.com")->send(new ArticleEmail());
+});
+
 // Authonticated Middleware
 Route::middleware(['auth'])->group(function(){
 
     //Articles Route
 Route::get('/articles', [ArticleController::class, 'index'])->name('articlesIndex');
+Route::get('/articlesAll', [ArticleController::class, 'indexAll'])->name('articlesAll');
 Route::get('/articles/create', [ArticleController::class, 'create'])->name('articlesCreate');
 Route::post('/articles', [ArticleController::class, 'store'])->name('articlesStore');
 Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articlesShow');
