@@ -65,7 +65,7 @@ class ArticleController extends Controller
                 'user_id' =>$data['user_id'],
             ]);
         }
-        Mail::to("bishomoise@gmail.com")
+        Mail::to(Auth()->user()->email)
         ->cc("bishomoise@getrwa.com")
         ->send(new ArticleEmail());
 
