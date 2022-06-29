@@ -13,7 +13,7 @@
                         <p class="card-text"><?php echo substr($result->content, 0, 100 )."..."; ?></p>                        
                         <p class="card-text">
                             @php 
-                                $prodID= Crypt::encrypt($result->id, 'st'); 
+                                $prodID= Crypt::encrypt($result->id); 
                             @endphpargument
                             <a href="{{ route('view.blog',$prodID) }}">Read More</a>
                             <?php

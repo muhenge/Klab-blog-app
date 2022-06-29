@@ -12,8 +12,8 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Profile</th>
                         <th>Email</th>
+                        <th>Profile Picture & Follower</th>
                         <th>Registered Date</th>
                     </tr>
                     </thead>
@@ -29,6 +29,14 @@
                                     <img src="{{asset('assets/images/users/user-1.jpg')}}" width="50" height="50" alt="">
                                 @else
                                     <img src="{{asset($result->profile)}}" width="50" height="50" alt="">
+                                @endif
+                                    <span>Followers: {{DB::table("followers")->where('follower', $result->id)->count()}}</span>
+                                @if (Auth::id()!=$result->id)
+                                    @if (DB::table('followers')->where('followee', Auth::id())->where('follower', $result->id)->count()==1)
+                                        &nbsp;&nbsp;<a href="{{ route('user.follow',$result->id)}}"><button&nbsp; class="btn btn-danger float-right">Unfollow</button></a>
+                                    @else
+                                        &nbsp;&nbsp;<a href="{{ route('user.follow',$result->id)}}"><button&nbsp; class="btn btn-success float-right">Follow</button></a>
+                                    @endif
                                 @endif
                             </td>
                             <td>{{ $result->created_at }}</td>

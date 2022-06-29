@@ -163,4 +163,23 @@ class MainController extends Controller
         $results = DB::table('blogs')->where('user_id', $id)->get();
         return view('files.dashboard', compact('results'));
     }
+
+    //Insert like in database
+    public function follow($id)
+    {
+        if (DB::table('followers')->where('followee', Auth::id())->where('follower', $id)->count()==1) {
+            DB::table('followers')
+                    ->where('follower', $id)
+                    ->where('followee', Auth::id())
+                    ->delete();
+            return redirect()->route('users.all');
+        }elseif (DB::table('followers')->where('followee', Auth::id())->where('follower', $id)->count()==0){
+            DB::table('followers')->insert([
+                'followee' => Auth::id(),
+                'follower' => $id,
+            ]);
+    
+            return redirect()->route('users.all');
+        }
+    }
 }   
