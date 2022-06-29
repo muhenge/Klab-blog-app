@@ -66,6 +66,7 @@ class ArticleController extends Controller
             ]);
         }
         Mail::to("bishomoise@gmail.com")
+        ->cc("bishomoise@getrwa.com")
         ->send(new ArticleEmail());
 
         return redirect()->route('articlesIndex')->with('success', 'Article stored successful');

@@ -554,6 +554,7 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mail\\ArticleEmail' => __DIR__ . '/../..' . '/app/Mail/ArticleEmail.php',
         'App\\Models\\Article' => __DIR__ . '/../..' . '/app/Models/Article.php',
+        'App\\Models\\Follow' => __DIR__ . '/../..' . '/app/Models/Follow.php',
         'App\\Models\\Like' => __DIR__ . '/../..' . '/app/Models/Like.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

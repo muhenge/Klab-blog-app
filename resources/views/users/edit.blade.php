@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header"><h3>{{ __('Change Information') }}</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('userUpdate', $user->id) }}" enctype="multipart/form-data">

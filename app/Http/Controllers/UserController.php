@@ -6,13 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+Use App\Models\Follow;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        $follow = Follow::all();
+        $count_follow = collect($follow)->count();
+
+        $users = User::all()->where('id', '!=', Auth()->user()->id);
+        return view('users.index', compact('users','count_follow'));
     }
 
     public function edit($id)
@@ -41,7 +45,7 @@ class UserController extends Controller
             $image->move($destinationPath, $profileImage);
             $name = $data->file('profile')->getClientOriginalName();
             $user->profile = $name;
-                }
+        }
 
 
         $user->name = $data->name;

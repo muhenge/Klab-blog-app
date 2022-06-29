@@ -28,8 +28,6 @@ class ArticleEmail extends Mailable
      */
     public function build()
     {
-        // return $this->from('example@example.com', 'Example')
-        //         ->view('emails.orders.shipped');
         $subject = "kLab Blog App notification";
         return $this->subject($subject)->view('emails.index');
     }

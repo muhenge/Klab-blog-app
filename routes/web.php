@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,10 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('userUpdate')
 //Like routes
 Route::get('/like/{id}/like', [LikeController::class, 'like'])->name('likeIndex');
 Route::get('/likes/{id}/likes', [LikeController::class, 'Dislike'])->name('dislikeIndex');
+
+//Follow Routes
+Route::get('/follow/{id}', [FollowController::class, 'Follow'])->name('followIndex');
+
 
 });
 

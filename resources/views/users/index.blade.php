@@ -16,6 +16,7 @@
                             <th>N <sup>o</sup></th>
                             <th>Username</th>
                             <th>Profile</th>
+                            <th>Follow</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,9 @@
                             <img width="70px" height="70px" src="{{ $user->profile }}" alt="profile">
                             @endif
                                 </td>
+                                <td>
+                                    <a href="{{ route('followIndex', $user->id) }}" class="btn btn-primary">Follow</a>
+                                </td>
                                 @php
                                     $i++
                                 @endphp
@@ -45,7 +49,7 @@
                         
                         @empty
                         <tr>
-                            <td colspan="2">
+                            <td colspan="4">
                                 <center><h5 style="color:red; size:24px;">No user found in database.</h5></center>
                             </td>
                         </tr>
