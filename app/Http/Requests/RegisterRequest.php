@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
         return [
             'username'=> 'required',
             'email'=> 'required',
-            'password'=>'required'
+            'password'=>'required',
         ];
     }
 }

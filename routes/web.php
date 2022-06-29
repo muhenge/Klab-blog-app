@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticalCtrl;
 use App\Http\Controllers\AuthCtrl;
+use App\Http\Controllers\LikerController;
 use App\Http\Controllers\LoginCtrl;
 use App\Http\Controllers\LogoutCtrl;
 use App\Http\Controllers\RegisterCtrl;
@@ -18,13 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('myauth');
-
+Route::get('/',[ArticalCtrl::class,'index'])->name('home')->middleware('myauth');
+Route::get('/dashboard', [ArticalCtrl::class, 'getUsers'])->name('dashboard')->middleware('myauth');
+Route::put('/like/{id}', [LikerController::class,'likeArticle'])->name('like')->middleware('like');
 //AUTH
 
-Route::get('/login',[LoginCtrl::class,'show'])->name('home');
+Route::get('/login',[LoginCtrl::class,'show'])->name('loginForm');
 Route::post('/login',[LoginCtrl::class,'login'])->name('login');
 Route::get('/register',[RegisterCtrl::class,'show'])->name('registration');
 Route::post('/register',[RegisterCtrl::class,'register'])->name('register');

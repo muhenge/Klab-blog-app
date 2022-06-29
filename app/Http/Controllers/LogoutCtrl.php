@@ -11,6 +11,6 @@ class LogoutCtrl extends Controller
     {
         Session::flush();
         Auth::logout();
-        redirect()->route('login');
+       return redirect()->route('loginForm');
     }
 }

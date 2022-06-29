@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articals', function (Blueprint $table) {
-            $table->id();
-            $table->longText('title');
-            $table->longText('content');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->text('profile')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articals');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('profile');
+        });
     }
 };
