@@ -62,6 +62,13 @@
                             display:flex;
                             padding-top:30px;
                         }
+                        .like{background-color:blue;
+                              color:white;}
+                              .like:hover{
+                                background-color: white;
+                                color:blue;
+                                font-weight: bold;
+                              }
         </style>
     </head>
     <body class="antialiased">
@@ -107,12 +114,35 @@
       
             @foreach ($searchField as $td)
             <div class="container">
+                
                 <div class="iamge"> <img src="{{$td->image}}" alt="no image found" width="300" height="200"/></div>
             <div class="contents">
                 <h1 class="blogtitle"> {{ $td->title }}</td></h1>
                         <h4 class="blogdescript"> {{ $td->description }}</td></h4>
                         @if(auth()->user())
-                       <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>
+                        @if(!$td->likedBy(auth()->user()))
+                        <form action="/like/post" method="POST">
+                            <input type="hidden" name="blog_id" value="{{ $td->id }}">
+                            @csrf
+                        <button type="submit" class="like">{{$td->likes->count()}}{{ Str::plural('like',$td->likes->count()) }}</button>
+                        
+                    </form>
+                    @else
+                    <form action="/like/post" method="POST">
+                        <input type="hidden" name="blog_id" value="{{ $td->id }}">
+                        @csrf
+                        @method('DELETE')
+                    <button type="submit" class="like">unlike</button>
+                    <button type="submit" class="like">{{$td->likes->count()}}{{ Str::plural('like',$td->likes->count()) }}</button>
+                </form>
+                    @endif
+                    @endif
+                        @if(auth()->user())
+                       <div style="margin-left:34rem;"> 
+                       <a href="delete/{{$td->id}}">Delete</a>
+                       <a href="Edit/{{$td->id}}">Edit</a>
+                       </div>
+                        
                          @endif
             </div>
                        

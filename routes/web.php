@@ -10,6 +10,7 @@ use App\Http\Controllers\singleController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\editProfileController;
+use App\Http\Controllers\likesController;
 use App\Models\todos;
 use App\Http\Controllers\searchcontroller;
 
@@ -41,3 +42,5 @@ Route::post('/logout',[SessionController::class,'destroy']);
 Route::get('/profile',[ProfileController::class,'userprofile']);
 Route::get('/editprofile/{user}',[editProfileController::class,'editprofile']);
 Route::post('/update/{user}',[editProfileController::class,'update']);
+Route::post('/like/post',[likesController::class,'like']);
+Route::DELETE('/like/post',[likesController::class,'destroy']);

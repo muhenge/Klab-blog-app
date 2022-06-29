@@ -55,4 +55,8 @@ class User extends Authenticatable
         $image->move($imagepath,$imagename);
         return $path.$imagename;
     }
+    public function likes(){
+        return $this->hasMany(likes::class);
+    }
+    
 }

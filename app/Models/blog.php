@@ -30,4 +30,10 @@ class blog extends Model
     public static function find($usern){
         return static::all()->firstWhere('user_id',$usern);
      }
+     public function likes(){
+        return $this->hasmany(likes::class);
+     }
+     public function likedBy(user $user){
+        return $this->likes->contains('user_id',$user->id);
+     }
 }
