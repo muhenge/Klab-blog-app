@@ -10,7 +10,6 @@ class LikerController extends Controller
 {
     public function likeArticle(Request $request, $id){
 
-        $id = Crypt::decrypt($id);
         $article= Artical::findOrFail($id);
         $article->likes=$request->likes;
         $article->save();

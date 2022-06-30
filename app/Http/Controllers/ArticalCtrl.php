@@ -39,7 +39,7 @@ class ArticalCtrl extends Controller
    
     public function store(Request $request)
     {
-        $validation = Validator::make($request->all(), ['title' => 'required|max:30', 'content' => 'required']);
+        $validation = Validator::make($request->all(), ['title' => 'required|max:300', 'content' => 'required']);
         if($validation->fails()){
             return redirect()->back()->withErrors($validation);
         }
@@ -56,7 +56,6 @@ class ArticalCtrl extends Controller
             $artical['image'] = $filename;
         }
         $artical->save();
-        //event(new ArticleCreated(auth()->user()->email));
         $this->dispatch(new SendEmailJob(auth()->user()->email));
         return redirect()->route('artical.index')->with('msg','Artical created');
     }

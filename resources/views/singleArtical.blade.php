@@ -16,7 +16,7 @@
     <p class="card-text"> {{$article->content}}</p>
   </div>
   <div class="card-footer">
-    <form action="{{route('like',Crypt::encrypt($article->id))}}" method="POST">
+    <form action="{{route('like',$article->id)}}" method="POST">
       @csrf
       @method('PUT')
       <button type="submit"><span class="badge bg-secondary">{{$article->likes}} <i class="bi bi-heart"></i></span></button>

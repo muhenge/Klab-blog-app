@@ -18,10 +18,11 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{$article->title}}</h5>
-        <p class="text-muted">{{substr($article->content, 350)}}</p>
+        <p class="text-muted">{{substr($article->content, 3000)}}</p>
         Read More.....
       </div>
     </div>
+
       <div class="card-footer">
       <span class="badge bg-secondary">{{$article->likes}} Likes</span>
        <small class="text-muted">{{$article->created_at->diffForHumans()}}</small>

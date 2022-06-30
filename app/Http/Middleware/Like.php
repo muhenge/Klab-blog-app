@@ -21,7 +21,7 @@ class Like
     public function handle(Request $request, Closure $next)
     {
         $userId=Auth::user()->id;
-        $articleId= Crypt::decrypt($request->id);
+        $articleId=$request->id;
         $likes= Artical::findOrFail($articleId)->likes;
         $isLiked = Liker::where([['user_id','=', $userId], ['article_id', '=', $articleId]])->get();
         if(count($isLiked)>0 && $isLiked->first()->likes==1){
