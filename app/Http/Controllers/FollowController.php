@@ -16,8 +16,12 @@ class FollowController extends Controller
             'user1_id' =>$user_id,
             'user2_id' => $id,
         ]);
-        //  $users = User::all()->where('id', '!=', Auth()->user()->id);
-        // return view('users.index', compact('users'));
+        return redirect()->route('userIndex');
+    }
+
+    public function Unfollow(Follow $follow ,$id)
+    {
+        $follow->find($id)->delete();
         return redirect()->route('userIndex');
     }
 }

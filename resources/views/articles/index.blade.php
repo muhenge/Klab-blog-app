@@ -48,7 +48,8 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $article->content }}
+                                {{-- {{ $article->content }} --}}
+                                {{ Str::substr($article->content, 0, 210) }}...
                             </td>
                             <td style="width: 20%">
                                 <a href="{{ route('articlesEdit', $article->id) }}"><button class="btn btn-info">Update</button></a>
@@ -61,7 +62,7 @@
                         @empty
                         <tr>
                             <td colspan="5">
-                                <center><h5 style="color:red; size:24px;">No Articles found in database.</h5></center>
+                                <center><h5 style="color:red; size:24px;">You don't have any article.</h5></center>
                             </td>
                         </tr>
                         @endforelse

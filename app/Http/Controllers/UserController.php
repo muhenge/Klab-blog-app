@@ -17,8 +17,8 @@ class UserController extends Controller
         $follow = Follow::all();
         $count_follow = collect($follow)->count();
 
-        $users = User::all();
-        // ->where('id', '!=', Auth()->user()->id);
+        $users = User::all()
+        ->where('id', '!=', Auth()->user()->id);
         return view('users.index', compact('users','count_follow'));
     }
 
@@ -40,7 +40,9 @@ class UserController extends Controller
                 'profile' =>'image|mimes:png,jpg,jpeg,gif|max:2048',
             ]
         );
-        $user = user::find($id);
+        $decrypted = Crypt::decryptString($id);
+
+        $user = user::find($decrypted);
 
         if($data->hasFile('profile'))
         {

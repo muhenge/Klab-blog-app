@@ -57,6 +57,7 @@ Route::get('/likes/{id}/likes', [LikeController::class, 'DislikeAll'])->name('di
 
 //Follow Routes
 Route::get('/follow/{id}', [FollowController::class, 'Follow'])->name('followIndex');
+Route::get('/unfollow/{id}', [FollowController::class, 'Unfollow'])->name('unfollowIndex');
 
 
 });

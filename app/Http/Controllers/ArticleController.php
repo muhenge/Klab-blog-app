@@ -65,10 +65,10 @@ class ArticleController extends Controller
                 'user_id' =>$data['user_id'],
             ]);
         }
-        Mail::to(Auth()->user()->email)
-        ->cc("bishomoise@getrwa.com")
+        // Mail::to(Auth()->user()->email)
+        // ->cc("bishomoise@getrwa.com")
         // ->send(new ArticleEmail());
-        ->later(now()->addMinutes(1), new ArticleEmail());
+        // ->later(now()->addMinutes(1), new ArticleEmail());
 
         return redirect()->route('articlesIndex')->with('success', 'Article stored successful');
     }

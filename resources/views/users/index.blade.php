@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+@php
+    use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
+    use App\Models\User;
+    use Illuminate\Support\Facades\Validator;
+    Use App\Models\Follow;
+    use Illuminate\Support\Facades\Crypt;
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -40,7 +47,20 @@
                             @endif
                                 </td>
                                 <td>
+                                    @php
+                                         $user_id = Auth()->user()->id;
+                                         $user_follow = Follow::all()->where('user1_id', $user_id)->where('user2_id', $user->id)->where('follow', 1);
+                                         $follow_id = DB::table('follows')->select('id')->where('user1_id', $user_id)->where('user2_id', $user->id)->where('follow', 1)->get();
+                                        $user_count = collect($user_follow)->count();
+                                    @endphp
+                                    @if ($user_count == 1)
+                                    @forelse ($follow_id as $follow_idd)
+                                    <a href="{{ route('unfollowIndex', $follow_idd->id) }}" class="btn btn-danger">Unfollow</a>
+                                    @empty
+                                    @endforelse
+                                    @else
                                     <a href="{{ route('followIndex', $user->id) }}" class="btn btn-primary">Follow</a>
+                                    @endif
                                 </td>
                                 @php
                                     $i++
@@ -50,7 +70,7 @@
                         @empty
                         <tr>
                             <td colspan="4">
-                                <center><h5 style="color:red; size:24px;">No user found in database.</h5></center>
+                                <center><h5 style="color:red; size:24px;">No other user found in database.</h5></center>
                             </td>
                         </tr>
                         @endforelse

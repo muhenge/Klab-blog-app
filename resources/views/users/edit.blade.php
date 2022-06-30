@@ -8,7 +8,7 @@
                 <div class="card-header"><h3>{{ __('Change Information') }}</h3></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('userUpdate', $user->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('userUpdate',  Crypt::encryptString($user->id)) }}" enctype="multipart/form-data">
                         @csrf
                         @method('put')
 

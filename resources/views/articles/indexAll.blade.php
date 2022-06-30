@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Crypt;
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"><h3>{{ __('All articles') }}</h3></div>
+                <div class="card-header">
+                    <h3 class="card-title"><h3 style="float:left">All Articles</h3><a href="{{ route('articlesCreate') }}">
+                        <button class="btn btn-primary" style="float:right">New Article</button></a></h3>
+                </div>
 
                 <div class="card-body">
                    
@@ -60,7 +63,6 @@ use Illuminate\Support\Facades\Crypt;
                                             <div class="card-action">
                                                 <p class="read-more"><a href="{{ route("articleContentAll", $article->id) }}">Read More</a></p>
                                                 <div class="like">
-                                                    {{-- <i class="far fa-thumbs-up">&nbsp;{{ $count }} </i> --}}
                                                     @if ($user_count == 0)
                                                     <a href="{{ route('likeIndexAll', $article->id) }}"><i class="far fa-thumbs-up"></i></a>&nbsp; {{ $count }}
                                                     @else
