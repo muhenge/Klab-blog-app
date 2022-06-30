@@ -7,9 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SignUp extends Mailable
+class SignUp extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
+    
 
     /**
      * Create a new message instance.

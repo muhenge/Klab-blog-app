@@ -61,12 +61,21 @@ class AuthController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
 
-        // Mail::to($request->input('email'))
-        //     ->cc('gustave@gustave.com')
-            // ->send(new SignUp());
-        $user->save();         
+        Mail::to($request->input('email'))
+            ->send(new SignUp());
+            
+        $user->save();       
+        $credentials = ([
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ]);
+ 
+        if (Auth::attempt($credentials)) {
 
-        return redirect()->route('login');
+            $request->session()->regenerate();
+            return redirect()->route('dashboard');
+
+        }  
     }
 
     public function logout(Request $request)
