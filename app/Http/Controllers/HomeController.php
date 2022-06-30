@@ -7,6 +7,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 use App\Models\article;
+use App\Models\like;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,13 +37,16 @@ class HomeController extends Controller
          //$data=User::all();
 
          $count=1;
+
         $dat=DB::select('SELECT * from  articles where user_id='.Auth::user()->id.'');
         $count=count($dat);
+        $like=DB::table('likes')->where('user_id',Auth::user()->id)->count();
+        
         if($count>=1)
 
         {
 
-            return view('home',compact(['data','dat','count']));
+            return view('home',compact(['data','dat','count','like']));
         }
         else{
 

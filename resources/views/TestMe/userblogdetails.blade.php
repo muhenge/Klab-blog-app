@@ -24,7 +24,7 @@
                                      <h6 class="pb-2"><i class="mdi mdi-help-circle text-primary mr-4 faq-icon"></i> {{$value->title}}</h6>
                                  </div>
                                  <p class="text-muted pt-2"> {{substr($value->content,0,161)}}...
-                                    <form  action="{{route('readMore',$value->id)}}" method="POST">
+                                    <form  action="{{route('readMore',Crypt::encryptString($value->id))}}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <button type="submit" ><span class="badge badge-success badge-pill">ReadMore</span></button>

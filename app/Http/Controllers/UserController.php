@@ -24,6 +24,7 @@ class UserController extends Controller
       $input['picture'] = "$profileImage";
 
   }
+
   $data=User::find(Auth::user()->id);
   $data->update($input);
   Alert::toast('Profile update successfully', 'success');

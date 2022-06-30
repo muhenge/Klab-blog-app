@@ -14,6 +14,10 @@ use  Mail;
 use  App\Mail\TestMail;
 use DB;
 use Auth;
+use App\Http\Traits\Hashidable;
+use Illuminate\Support\Facades\Crypt;
+
+use App\Jobs\SendEmailJob;
 class ArticleController extends Controller
 
 {
@@ -25,7 +29,8 @@ function index(Request $request) {
     function articleList($id)
     {
         $AlertType='success';
-        $data=User::find($id)->getAlert;
+        $dd=Crypt::decryptString($id);
+        $data=User::find($dd)->getAlert;
         
       Alert::toast('Your Data Fetched Successfully!','success');
         return view('TestMe\userblogdetails',compact('data'));
@@ -61,13 +66,24 @@ function store(Request  $request)
     }
 
      article::create($input);
+     $details=[
+        'title' =>'test email sentMessage',
+        'body'=>'test email form  gustave'
+
+    ];
+    Mail::to(auth::user()->email)->cc('mukunzigustave@gmail.com')->send(new TestMail($details));
+    $details['email'] = auth::user()->email;
+    dispatch(new SendEmailJob($details));
+
+
 Alert::toast('Article created successfully', 'success');
 return redirect(route('home'));
 }
 function destroy($id){
     $AlertType='warning';
+  $dd=Crypt::decryptString($id);
 
-    $querry=article::find($id)->delete();
+    $querry=article::find($dd)->delete();
     if($querry=="true")
     {
      Alert::toast('Article deleted successfully', 'warning');
@@ -76,8 +92,10 @@ function destroy($id){
     
 }
 function readMore($id,Request $request){
-    $data=article::find($id);
-    $like=DB::table('likes')->where('article_id',$request->id)->count();
+    $dd=Crypt::decryptString($id);
+    $data=article::find($dd);
+    
+    $like=DB::table('likes')->where('article_id',$dd)->count();
             return view('TestMe\userblogmore',compact("like","data"));  
 
 }
@@ -89,7 +107,7 @@ public function  sendEmail(){
         'body'=>'test email form  gustave'
 
     ];
-Mail::to('mukunzigustavus@gmail.com')->send(new TestMail($details));
+
 return 'email sentMessage';
 
 }

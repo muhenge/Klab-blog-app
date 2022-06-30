@@ -187,6 +187,7 @@ return [
          * Package Service Providers...
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Vinkla\Hashids\HashidsServiceProvider::class,
          //
          
          //SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
@@ -216,7 +217,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        //'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
 
     ])->toArray(),
 

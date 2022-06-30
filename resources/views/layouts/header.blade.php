@@ -57,17 +57,17 @@
                             </li>
 
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> Manday to Tues </span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-briefcase"></i> <span> Last Week</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Task <span class="badge badge-success badge-pill float-right">1</span></a></li>
-                                    {{-- <li><a href="ui-buttons.html">Buttons</a></li> --}}
+                                    <li><a href="{{route('home')}}">Task <span class="badge badge-success badge-pill float-right">1</span></a></li>
+                                   <li> <a class="dropdown-item" href="{{ 'profile' }}"><i class="mdi mdi-settings-variant "></i>Change Profile</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-list"></i> <span> Other Week</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="dripicons-list"></i> <span> This Week</span> <span class="menu-arrow float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="advanced-alertify.html">data</a></li>
+                                    <li><a href="{{route('sendEmail')}}">Send Email</a></li>
                                     
                                 </ul>
                             </li>

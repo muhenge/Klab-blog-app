@@ -44,7 +44,7 @@ Route::get('list',[ UserController::class,'list'])->name('list');
 Route::delete('delete/{id}',[App\Http\Controllers\ArticleController::class,'destroy'])->name('delete');
 Route::post('update1',[UserController::class,'update'])->name('update1');
 ///readmore routesCallback
-Route::post('readMore/{id?}',[ App\Http\Controllers\ArticleController::class,'readMore'])->name('readMore');
+Route::get('readMore/{id?}',[ App\Http\Controllers\ArticleController::class,'readMore'])->name('readMore');
 
 });
 Route::post('code',[App\Http\Controllers\QrcodeController::class,'index'])->name('code');
@@ -71,9 +71,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
-Route::get('email-test', function(){
-    $details['email'] = 'karekezigustave@gmail.com';
-    dispatch(new App\Jobs\SendEmailJob($details));
-    dd('done');
 
-});
+   
+

@@ -36,6 +36,16 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        parent::boot();
+
+        Route::bind('User', function ($value, $route) {
+            return $this->getModel(\App\Models\User::class, $value);
+        });
+    
+        Route::bind('article', function ($value, $route) {
+            return $this->getModel(\App\Models\article::class, $value);
+        });
     }
 
     /**
@@ -49,4 +59,11 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
+    private function getModel($model, $routeKey)
+{
+    $id = \Hashids::connection($model)->decode($routeKey)[0] ?? null;
+    $modelInstance = resolve($model);
+
+    return  $modelInstance->findOrFail($id);
+}
 }

@@ -29,12 +29,13 @@
                                     <form action="{{route('store')}}" method='POST'>
                                         @csrf
 
-                                        <input type="hidden" name="id" value="{{$data->id}}" /> 
+                                        <input type="hidden" name="id" value="{{Crypt::encryptString($data->id)}}" /> 
                                         @method('POST')
-                                        <span class="badge badge-success badge-pill"><button type="submit"><i class="mdi mdi-hand-pointing-right" aria-hidden="true"></i></button></span>
+                                        <button type="submit" class=' btn-primary'><i class="mdi mdi-hand-pointing-right" aria-hidden="true"></i></button>
+                                        <button class=' btn-danger'>{{$like}}&nbsp;&nbsp;Likes</button>
                                     </form>
                                    
-                            <span class="badge badge-danger badge-pill">{{$like}}</span>
+                       
                                    </p>
                              </div>
                          </div>
