@@ -91,39 +91,4 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-<div class="row">
-    <div class="col-lg-6">
-        <div class="card m-b-30"> 
-            <div class="card-body  text-success">
-
-                <h4 class="mt-0 header-title text-primary border-bottom">Other Information</h4>
-                <?php
-                 $age="";
-                 $city="";
-                ?>
-                @foreach ($results as $row)
-                    <?php
-                        $age = $row->age;
-                        $city = $row->city;
-                    ?>
-                @endforeach
-
-                <form>
-                    <div class="form-group">
-                        <label>City</label>
-                        <input type="text" id="old" value="<?=$city?>" class="form-control" disabled required/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Age</label>
-                        <div>
-                            <input type="text" value="<?=$age?>" class="form-control" disabled required/>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div> <!-- end col -->
-</div>
 @endsection

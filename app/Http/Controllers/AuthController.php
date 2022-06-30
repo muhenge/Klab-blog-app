@@ -54,7 +54,7 @@ class AuthController extends Controller
         ]);
 
         
-        $user = new User;
+        $user = new User; 
     
         $user->name = $request->input('name');
         $user->profile = "null";

@@ -38,24 +38,35 @@ class MainController extends Controller
     }
     public function info()
     {        
-        return view('files.info');
+        $results = DB::connection('mysql2')->table('information')->where('user', Auth::id())->limit(1)->get();
+        return view('files.info',compact('results'));
     }
 
     public function save(Request $request)
     {
+        $results = DB::connection('mysql2')->table('information')->where('user', Auth::id())->count();
         $validate = $request->validate([
             'age' => ['required'],
-            'city' => ['required'],
-            'user' => ['required','unique:mysql2.information'],
+            'city' => ['required']
         ]);
 
-        DB::connection('mysql2')->table('information')->insert([
-            'user' => Auth::id(),
-            'age' => $request->input('age'),
-            'city' => $request->input('city')
-        ]);
-        
-        return redirect()->route('dashboard');
+        if ($results == 0) {
+            DB::connection('mysql2')->table('information')->insert([
+                'user' => Auth::id(),
+                'age' => $request->input('age'),
+                'city' => $request->input('city')
+            ]);
+            
+            return redirect()->route('information');
+        }else {
+            DB::connection('mysql2')->table('information')
+            ->where('user', Auth::id())
+            ->update(['age' => $request->input('age'), 'city' => $request->input('city')]);
+
+            return redirect()->route('information');
+            
+        }
+
     }
 
     //Insert blog in database

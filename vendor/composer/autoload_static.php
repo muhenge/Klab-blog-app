@@ -576,6 +576,7 @@ class ComposerStaticInit57853e7607a3313e9dfef18ec5b9bc3b
         'Carbon\\Exceptions\\BadFluentConstructorException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/BadFluentConstructorException.php',
         'Carbon\\Exceptions\\BadFluentSetterException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/BadFluentSetterException.php',
         'Carbon\\Exceptions\\BadMethodCallException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/BadMethodCallException.php',
+        'Carbon\\Exceptions\\EndLessPeriodException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/EndLessPeriodException.php',
         'Carbon\\Exceptions\\Exception' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/Exception.php',
         'Carbon\\Exceptions\\ImmutableException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/ImmutableException.php',
         'Carbon\\Exceptions\\InvalidArgumentException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidArgumentException.php',

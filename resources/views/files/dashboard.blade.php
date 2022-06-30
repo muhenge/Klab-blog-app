@@ -14,7 +14,11 @@
                         <p class="card-text">
                             @php 
                                 $prodID= Crypt::encrypt($result->id); 
-                            @endphpargument
+                            @endphp                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
                             <a href="{{ route('view.blog',$prodID) }}">Read More</a>
                             <?php
                             if ($result->user_id==Auth::id()){

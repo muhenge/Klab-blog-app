@@ -17,7 +17,7 @@ class SignUp extends Mailable implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct() 
     {
         //
     }
