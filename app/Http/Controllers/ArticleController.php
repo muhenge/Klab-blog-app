@@ -11,6 +11,7 @@ use App\Models\user;
 use App\Models\Like;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ArticleEmail;
+use Illuminate\Support\Facades\Crypt;
 
 class ArticleController extends Controller
 {
@@ -24,7 +25,6 @@ class ArticleController extends Controller
     public function indexAll()
     {
         $articles = Article::all();
-        // return($articles);
         return view('articles.indexAll', compact('articles'));
     }
 
@@ -67,7 +67,8 @@ class ArticleController extends Controller
         }
         Mail::to(Auth()->user()->email)
         ->cc("bishomoise@getrwa.com")
-        ->send(new ArticleEmail());
+        // ->send(new ArticleEmail());
+        ->later(now()->addMinutes(1), new ArticleEmail());
 
         return redirect()->route('articlesIndex')->with('success', 'Article stored successful');
     }
@@ -143,5 +144,30 @@ class ArticleController extends Controller
 
         $articles = Article::find($id);
         return view('articles.content', compact('articles','count', 'count2', 'user_count', 'user_count2'));
+    }
+
+    public function contentAll($id)
+    {
+        //user likes
+        $user_id = Auth()->user()->id;
+        $user = Like::all()->where('user_id', $user_id)->where('article_id', $id)->where('likes', '<=', 1);
+        $user_count = collect($user)->count();
+
+        //user dislike
+        $user2 = Like::all()->where('user_id', $user_id)->where('article_id', $id)->where('dislikes', 1);
+        $user_count2 = collect($user2)->count();
+
+        // return($user2);
+
+        //count likes
+        $likes = Like::all()->where('article_id', $id)->where('likes', 1);
+        $count = collect($likes)->count();
+
+        // count dislikes
+        $likes2 = Like::all()->where('article_id', $id)->where('dislikes', 1);
+        $count2 = collect($likes2)->count();
+
+        $articles = Article::find($id);
+        return view('articles.showContent', compact('articles','count', 'count2', 'user_count', 'user_count2'));
     }
 }

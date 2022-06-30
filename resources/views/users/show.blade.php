@@ -29,7 +29,7 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <a href="{{ route('userEdit', $user->id) }}"><center><button class="btn btn-info">Change Information</button></center></a>
+                                <a href="{{ route('userEdit', Crypt::encryptString($user->id)) }}"><center><button class="btn btn-info">Change Information</button></center></a>
                             </td>
                         </tr>
                     </table>

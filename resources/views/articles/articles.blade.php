@@ -18,11 +18,6 @@
                        @endphp
                         @forelse ($articles as $article)
                             <tr style="cursor: pointer;">
-                                {{-- <th>{{ $i }}</th> --}}
-                                {{-- <th>@if ($article->photo != "")
-                                    <img width="70px" height="80px" src="/images/article/{{ $article->photo }}" alt="">
-                                   
-                                    @endif</th> --}}
                                 <th>
                                     <a style="text-decoration: none; color:black; font-size:18px;" href="{{ route("articleContent", $article->id) }}">
                                         {{ $article->title }}

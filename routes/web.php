@@ -41,6 +41,7 @@ Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articl
 Route::get('/articles/{id}', [ArticleController::class, 'destroy'])->name('articlesDelete');
 Route::get('/articles{id}/title', [ArticleController::class, 'title'])->name('articleTitle');
 Route::get('/articles{id}/articles', [ArticleController::class, 'content'])->name('articleContent');
+Route::get('/articles{id}/articlesAll', [ArticleController::class, 'contentAll'])->name('articleContentAll');
 
 //Users route
 Route::get('/users', [UserController::class, 'index'])->name('userIndex');
@@ -50,7 +51,9 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('userUpdate')
 
 //Like routes
 Route::get('/like/{id}/like', [LikeController::class, 'like'])->name('likeIndex');
-Route::get('/likes/{id}/likes', [LikeController::class, 'Dislike'])->name('dislikeIndex');
+Route::get('/like/{id}/likeAll', [LikeController::class, 'likeAll'])->name('likeIndexAll');
+Route::get('/likes/{id}/likesAll', [LikeController::class, 'Dislike'])->name('dislikeIndex');
+Route::get('/likes/{id}/likes', [LikeController::class, 'DislikeAll'])->name('dislikeIndexAll');
 
 //Follow Routes
 Route::get('/follow/{id}', [FollowController::class, 'Follow'])->name('followIndex');

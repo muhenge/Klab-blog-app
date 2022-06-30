@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 Use App\Models\Follow;
+use Illuminate\Support\Facades\Crypt;
+
 
 class UserController extends Controller
 {
@@ -15,13 +17,16 @@ class UserController extends Controller
         $follow = Follow::all();
         $count_follow = collect($follow)->count();
 
-        $users = User::all()->where('id', '!=', Auth()->user()->id);
+        $users = User::all();
+        // ->where('id', '!=', Auth()->user()->id);
         return view('users.index', compact('users','count_follow'));
     }
 
     public function edit($id)
     {
-        $user = User::find($id);
+       
+            $decrypted = Crypt::decryptString($id);
+        $user = User::find($decrypted);
         return view('users.edit', compact('user'));
     }
 
@@ -57,7 +62,8 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::find($id);
+        $decrypted = Crypt::decryptString($id);
+        $user = User::find($decrypted);
         return view('users.show', compact('user'));
     }
 }
