@@ -21,6 +21,7 @@
             body {
                 font-family: 'Nunito', sans-serif;}
             .bar {
+                background-color: #2d3748;
             margin-left:30rem;
             padding-left:20px;
             display:flex;
@@ -72,24 +73,24 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="navbar-fixed">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mx-1/2">
+        <div class="navbar-fixed" style="background-color: #2d3748;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-#2d3748 mx-1/2">
                 <div class="bar">
-                <a class="navbar-brand" href="/">Home</a>
+                <a style="color:white;"class="navbar-brand" href="/">Home</a>
                 
                </div>
                 @if (auth()->user())
-                <a class="navbar-brand" href="/">Blog</a>
-                <a href="/new" class="new" style="margin-top:7px; padding-right:6px;">Create a blog</a>
-                <img src="{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="border:1px white solid; border-radius:50%;"><a class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
+                <a style="color:white;" class="navbar-brand" href="/">Blog</a>
+                <a href="/new"  class="navbar-brand" style=" padding-right:6px;color:white;">Create a blog</a>
+                <img src="{{ auth()->user()->profile}}" alt="no image found" width="30" height="30" style="border:1px white solid; border-radius:50%;"><a  style="color:white;" class="navbar-brand" href="/profile">{{ auth()->user()->name }}</a>
                     <form action="/logout" method="POST">
                         @csrf
                     <button type="submit" style="margin-top:6px;">logout</button>
                     </form>
                     @else
-                    <a class="navbar-brand" href="/login">login</a>
-                    <a class="navbar-brand"  href="/login" class="new" style="margin-top:4px; padding-right:6px;">Create a blog</a>
-                    <a class="navbar-brand" href="/login">Blog</a>
+                    <a style="color:white;" class="navbar-brand" href="/login">login</a>
+                    <a style="color:white;" class="navbar-brand"  href="/login" class="new" style="margin-top:4px; padding-right:6px;">Create a blog</a>
+                    <a style="color:white;" class="navbar-brand" href="/login">Blog</a>
                 @endif
              @if(Session()->has('success'))
              <div>
@@ -124,7 +125,7 @@
                         <form action="/like/post" method="POST">
                             <input type="hidden" name="blog_id" value="{{ $td->id }}">
                             @csrf
-                        <button type="submit" class="like">{{$td->likes->count()}}{{ Str::plural('like',$td->likes->count()) }}</button>
+                        <button type="submit" class="like">like</button>
                         
                     </form>
                     @else
@@ -133,17 +134,19 @@
                         @csrf
                         @method('DELETE')
                     <button type="submit" class="like">unlike</button>
-                    <button type="submit" class="like">{{$td->likes->count()}}{{ Str::plural('like',$td->likes->count()) }}</button>
+                    
                 </form>
                     @endif
                     @endif
+                    <button type="submit" class="like" style="background-color:white;color:blue;">{{$td->likes->count()}}{{ Str::plural('like',$td->likes->count()) }}</button>
                         @if(auth()->user())
-                       <div style="margin-left:34rem;"> 
-                       <a href="delete/{{$td->id}}">Delete</a>
-                       <a href="Edit/{{$td->id}}">Edit</a>
+                        @if($td->OwnedBy(auth()->user()))
+                       <div style="margin-left:34rem;margin-top:-50px;"> 
+                        <button style="background-color:rgb(196, 31, 58);color:white; border-radius:30px;width:12rem;"><a href="delete/{{$td->id}}">Delete</a></button>
                        </div>
+                       @endif
                         
-                         @endif
+                    @endif
             </div>
                        
             </div>

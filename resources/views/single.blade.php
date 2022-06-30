@@ -64,24 +64,20 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="navbar-fixed">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mx-1/2">
+        <div class="navbar-fixed" style="background-color: #2d3748;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-#2d3748 mx-1/2">
                 <div class="bar">
-                <a class="navbar-brand" href="/">Home</a>
-                <a class="navbar-brand" href="/login">Blog</a>
+                <a style="color:white;" class="navbar-brand" href="/">Home</a>
+                <a style="color:white;" class="navbar-brand" href="/login">Blog</a>
                 @if (auth()->user())
-                    <a class="navbar-brand" href="#">{{ auth()->user()->name }}</a>
-                    <a class="navbar-brand" href="/logout">logout</a>
+                    <a style="color:white;" class="navbar-brand" href="#">{{ auth()->user()->name }}</a>
+                    <a style="color:white;" class="navbar-brand" href="/logout">logout</a>
                     @else
-                    <a class="navbar-brand" href="/login">login</a>
+                    <a style="color:white;" class="navbar-brand" href="/login">login</a>
                 @endif
-             <a href="/login" class="new">Create a blog</a></div>
+             <a style="color:white;" href="/login" class="new">Create a blog</a></div>
         
-            <div class="searchn"> <form action="{{route('search')}}" method="GET">
-                @csrf
-            <input type="text" name="search" placeholder="search" class="search">
-            <button type="submit" class="searchs">search</button>
-            </form>
+           
         </nav>
         </div>
         </div>
@@ -96,7 +92,7 @@
                 <h1 class="blogtitle"> {{ $td->title }}</td></h1>
                         <h4 class="blogdescript"> {{ $td->description }}</td></h4>
                         @if(auth()->user())
-                       <div style="margin-left:34rem;"> <a href="delete/{{$td->id}}">Delete</a><a href="Edit/{{$td->id}">Edit</a></div>
+                       <div style="margin-left:34rem;background-color:rgb(196, 31, 58);color:white; border-radius:30px;padding-left:6rem;"> <a href="delete/{{$td->id}}">Delete</a></div>
                          @endif
             </div>
             </div>

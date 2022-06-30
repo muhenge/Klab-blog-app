@@ -20,7 +20,7 @@ class searchcontroller extends Controller
                         
                         
         }else{
-            $searchField=blog::simplepaginate(5);
+            $searchField=blog::orderBy('id','desc')->simplepaginate(5);
             
         }
         return view('welcome',['results'=>$searchField])->with('searchField',$searchField);

@@ -36,4 +36,7 @@ class blog extends Model
      public function likedBy(user $user){
         return $this->likes->contains('user_id',$user->id);
      }
+     public function OwnedBy(user $user){
+        return $user->id===$this->user_id;
+     }
 }
