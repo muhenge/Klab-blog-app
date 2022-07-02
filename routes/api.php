@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/login',[UserController::class, 'login']);
+
+Route::group(['middleware'=>'auth:sanctum'], function(){
+    //
+    Route::get("/user/allUser",[UserController::class,'AllUser']);
+    Route::post("/user/registerUser",[UserController::class,'RegisterUser']);
+});

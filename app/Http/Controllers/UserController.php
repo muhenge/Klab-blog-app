@@ -72,7 +72,7 @@ class UserController extends Controller
     }
 
 
-    // Login Authentication
+    // Sanctum Authentication with JWT Token
 
     public function login(Request $request)
     {
@@ -89,5 +89,28 @@ class UserController extends Controller
             'token' => $token
         ];
         return response($response, 201);
+    }
+
+    public function AllUser()
+    {
+        $users = User::all()
+        ->where('id', '!=', Auth()->user()->id);
+        return response($users, 200);
+    }
+
+    public function RegisterUser(Request $data)
+    {
+        // return Validator::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ]);
+        $user =  User::create([
+            'name' => $data['name'],
+            'username' =>$data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        return response($user, 201);
     }
 }
