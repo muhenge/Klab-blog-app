@@ -16,14 +16,14 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('/login',[UserController::class, 'login']);
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
-    //
-    Route::get("/user/allUser",[UserController::class,'AllUser']);
-    Route::post("/user/registerUser",[UserController::class,'RegisterUser']);
+    Route::get("/allUser",[UserController::class,'AllUser']);
+    Route::post("/registerUser",[UserController::class,'RegisterUser']);
+    Route::post("/logout",[UserController::class, 'logout']);
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 Use App\Models\Follow;
@@ -100,10 +101,11 @@ class UserController extends Controller
 
     public function RegisterUser(Request $data)
     {
-        // return Validator::make($data, [
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+        // return  Validator::make($data, [
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|unique:users,email',
+        //     'password' => 'required|string|confirmed'
         // ]);
         $user =  User::create([
             'name' => $data['name'],
@@ -111,6 +113,19 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        return response($user, 201);
+        $token = $user->createToken('mytoken')->plainTextToken;
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+        return response($response, 201);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth()->user()->tokens()->delete();
+        return [
+            'message' => 'Logged out'
+        ];
     }
 }
