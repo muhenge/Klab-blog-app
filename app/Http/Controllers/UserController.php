@@ -81,7 +81,7 @@ class UserController extends Controller
         if(!$user || !Hash::check($request->password, $user->password))
         {
             return response([
-                'message' => ['Credentials not valid']
+                'message' => ['Invalid email or password']
             ], 404);
         }
         $token = $user->createToken('my-blog-app-token')->plainTextToken;
