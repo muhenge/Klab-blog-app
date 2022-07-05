@@ -117,34 +117,35 @@ class ArticleController extends Controller
 
     public function title($id)
     {
-        
-        $articles = Article::all()->where('user_id', $id);
+        $decrypted = Crypt::decryptString($id);   
+        $articles = Article::all()->where('user_id', $decrypted);
         return view('articles.articles', compact('articles'));
     }
 
     public function content($id)
     {
+        $decrypted = Crypt::decryptString($id);
         //user likes
         $user_id = Auth()->user()->id;
-        $user = Like::all()->where('user_id', $user_id)->where('article_id', $id)->where('likes', '<=', 1);
+        $user = Like::all()->where('user_id', $user_id)->where('article_id', $decrypted)->where('likes', '<=', 1);
         $user_count = collect($user)->count();
 
         //user dislike
-        $user2 = Like::all()->where('user_id', $user_id)->where('article_id', $id)->where('dislikes', 1);
+        $user2 = Like::all()->where('user_id', $user_id)->where('article_id', $decrypted)->where('dislikes', 1);
         $user_count2 = collect($user2)->count();
 
-        // return($user2);
+        // return($user_count2);
 
         //count likes
-        $likes = Like::all()->where('article_id', $id)->where('likes', 1);
+        $likes = Like::all()->where('article_id', $decrypted)->where('likes', 1);
         $count = collect($likes)->count();
 
         // count dislikes
-        $likes2 = Like::all()->where('article_id', $id)->where('dislikes', 1);
+        $likes2 = Like::all()->where('article_id', $decrypted)->where('dislikes', 1);
         $count2 = collect($likes2)->count();
 
-        $articles = Article::find($id);
-        return view('articles.content', compact('articles','count', 'count2', 'user_count', 'user_count2'));
+        $articles = Article::find($decrypted);
+        return view('articles.content', compact('articles'));
     }
 
     public function contentAll($id)

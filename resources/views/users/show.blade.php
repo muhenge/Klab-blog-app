@@ -36,6 +36,11 @@
                             
                         </td>
                             <td><h4><b>Names</b></h4></td><td><h4>{{ $user->name }}</h4></td>
+                            <td rowspan="3">
+                                <div style="display: flex; margin-left:4rem;">Following &nbsp;<p style="background-color: black; color:white; font-size:18px; border-radius:30px; width:30px;height:30px; text-align:center;">{{ $following }}</p></div>
+                                <div style="display: flex; margin-left:4rem;">Followers &nbsp;<p style="background-color: black; color:white; font-size:18px; border-radius:30px; width:30px;height:30px; text-align:center;">{{ $followers }}</p></div>
+                                
+                                </td>
                         </tr>
                         <tr>
                             <td><h4><b>Username</b></h4></td><td><h4>{{ $user->username }}</h4></td>
@@ -95,6 +100,14 @@
                     <label for="inputHorizontalSuccess" class="col-sm-4 col-form-label">Email</label>
                     <div class="col-sm-12">
                         <input type="email" name="email" required value="{{ $user->email }}" class="form-control form-control-success" id="inputHorizontalSuccess">
+                    </div>
+                </div>
+                <div class="form-group row has-success">
+                  
+                    <label for="inputHorizontalSuccess" class="col-sm-4 col-form-label">{{ __('Profile') }}</label>
+                  
+                    <div class="col-sm-12">
+                        <input type="file" name="profile" value="{{ $user->profile }}" class="form-control form-control-success" id="inputHorizontalSuccess">
                     </div>
                 </div>
                 <div class="form-group pass_show"> 

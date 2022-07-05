@@ -35,7 +35,7 @@
                             <tr style="cursor: pointer;">
                                 <td>{{ $i }}</td>
                                 <td>
-                                    <a style="text-decoration: none; color:black" href="{{ route('articleTitle', $user->id) }}">
+                                    <a style="text-decoration: none; color:black" href="{{ route('articleTitle', Crypt::encryptString($user->id)) }}">
                                     {{ $user->username }}
                                 </a>
                                 </td>

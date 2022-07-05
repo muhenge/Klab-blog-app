@@ -27,7 +27,7 @@
 
                         </tr>
                         
-                        <tr><td>
+                        {{-- <tr><td>
                             <div class="like">
                                 @if ($user_count == 0)
                                 <a href="{{ route('likeIndex', $articles->id) }}"><i class="far fa-thumbs-up"></i></a>&nbsp; {{ $count }}
@@ -47,7 +47,7 @@
                         </div>
 
                         
-                    </td></tr>
+                    </td></tr> --}}
                     
                     </thead>
                    </table>

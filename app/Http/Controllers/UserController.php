@@ -86,7 +86,11 @@ class UserController extends Controller
     {
         $decrypted = Crypt::decryptString($id);
         $user = User::find($decrypted);
-        return view('users.show', compact('user'));
+
+        $followers = Follow::all()->where('user2_id', Auth()->user()->id)->where('follow', 1)->count();
+        $following = Follow::all()->where('user1_id', Auth()->user()->id)->where('follow', 1)->count();;
+
+        return view('users.show', compact('user','followers','following'));
     }
 
 

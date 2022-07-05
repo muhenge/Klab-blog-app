@@ -19,7 +19,7 @@
                         @forelse ($articles as $article)
                             <tr style="cursor: pointer;">
                                 <th>
-                                    <a style="text-decoration: none; color:black; font-size:18px;" href="{{ route("articleContent", $article->id) }}">
+                                    <a style="text-decoration: none; color:black; font-size:18px;" href="{{ route("articleContent", Crypt::encryptString($article->id)) }}">
                                         {{ $article->title }}
                                     </a>
                                 </th>

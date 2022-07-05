@@ -21,9 +21,9 @@ use App\Http\Controllers\ArticleController;
 // });
 
 Route::post('/login',[UserController::class, 'login']);
+Route::post("/registerUser",[UserController::class,'RegisterUser']);
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get("/allUser",[UserController::class,'AllUser']);
-    Route::post("/registerUser",[UserController::class,'RegisterUser']);
     Route::post("/logout",[UserController::class, 'logout']);
 });
