@@ -65,6 +65,23 @@ class UserController extends Controller
         return redirect()->route('userShow',$id)->with('success', 'Information updated successful');
     }
 
+    public function Password(Request $request, $id)
+    {
+        $decrypted = Crypt::decryptString($id);
+        $oldpass = $request->oldpsw;
+        $pass = User::find($decrypted);
+        if(Hash::check($oldpass, $pass->password)!=1)
+        {
+            return redirect()->route('userShow',$id)->with('danger', 'Wrong old password');
+        }
+        else{
+            $pass->password = Hash::make($request->newpsw);
+            $pass->save();
+            return redirect()->route('userShow',$id)->with('success', 'Password changed successsfully');
+        }
+
+    }
+
     public function show($id)
     {
         $decrypted = Crypt::decryptString($id);

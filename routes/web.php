@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/send-mail', function () {
-    Mail::to("bishomoise@gmail.com")->send(new ArticleEmail());
+    Mail::to("bishomoise84@gmail.com")->send(new ArticleEmail());
 });
 
 // Authonticated Middleware
@@ -48,6 +48,8 @@ Route::get('/users', [UserController::class, 'index'])->name('userIndex');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('userEdit');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('userShow');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('userUpdate');
+Route::put('/user/{id}', [UserController::class, 'Password'])->name('changePassword');
+
 
 //Like routes
 Route::get('/like/{id}/like', [LikeController::class, 'like'])->name('likeIndex');
