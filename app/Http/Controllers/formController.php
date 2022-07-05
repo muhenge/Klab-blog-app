@@ -6,6 +6,8 @@ use auth;
 use App\Models\blog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\postSaved;
+use Illuminate\Support\Facades\Mail;
 
 class formController extends Controller
 {
@@ -27,6 +29,8 @@ class formController extends Controller
        $blogs->user_id=auth()->user()->id;
 
       $blogs->save();
+      $user=auth()->user();
+      Mail::to($user)->send(new postSaved());
 
 return redirect('/');
       }

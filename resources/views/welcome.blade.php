@@ -140,6 +140,14 @@
                     @endif
                     <button type="submit" class="like" style="background-color:white;color:blue;">{{$td->likes->count()}}{{ Str::plural('like',$td->likes->count()) }}</button>
                         @if(auth()->user())
+                        @if(!$td->OwnedBy(auth()->user()))
+                       <div style="margin-left:34rem;margin-top:-50px;"> 
+                        <form action="" method="">
+                            <input type="hidden" name="user_id" value="{{$td->user->id}}">
+                        <button type="submit" style="background-color:rgb(20, 225, 233);color:white; border-radius:30px;width:12rem;">follow</button>
+                        </form>
+                       </div>
+                       @endif
                         @if($td->OwnedBy(auth()->user()))
                        <div style="margin-left:34rem;margin-top:-50px;"> 
                         <button style="background-color:rgb(196, 31, 58);color:white; border-radius:30px;width:12rem;"><a href="delete/{{$td->id}}">Delete</a></button>

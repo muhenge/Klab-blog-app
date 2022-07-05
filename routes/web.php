@@ -44,3 +44,4 @@ Route::get('/editprofile/{user}',[editProfileController::class,'editprofile']);
 Route::post('/update/{user}',[editProfileController::class,'update']);
 Route::post('/like/post',[likesController::class,'like']);
 Route::DELETE('/like/post',[likesController::class,'destroy']);
+Route::post('/like/post',[followController::class,'follow']);

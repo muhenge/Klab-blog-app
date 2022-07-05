@@ -58,5 +58,7 @@ class User extends Authenticatable
     public function likes(){
         return $this->hasMany(likes::class);
     }
-    
+    public function loggedBy(user $user){
+        return $user->id===$this->user_id;
+     }
 }
