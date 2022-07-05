@@ -1,1 +1,1 @@
-<h1>Article Inserted successfuly Email</h1>
+<h1>Dear {{ $user }}, Your Article Inserted successfuly</h1>

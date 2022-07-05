@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\User;
 
 class ArticleEmail extends Mailable
 {
@@ -28,7 +29,15 @@ class ArticleEmail extends Mailable
      */
     public function build()
     {
+        if(Auth()->user())
+        {
+            $user = Auth()->user()->username;
+        }
+        else{
+
+            $user = "Shobi";
+        }
         $subject = "kLab Blog App notification";
-        return $this->subject($subject)->view('emails.index');
+        return $this->subject($subject)->view('emails.index', compact('user'));
     }
 }

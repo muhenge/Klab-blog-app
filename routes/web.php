@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/send-mail', function () {
-    Mail::to("bishomoise84@gmail.com")->send(new ArticleEmail());
+    Mail::to("bishomoise@gmail.com")->send(new ArticleEmail());
 });
 
 // Authonticated Middleware

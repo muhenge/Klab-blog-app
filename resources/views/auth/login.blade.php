@@ -14,7 +14,7 @@
                 </div>
                 <br><br>
                 {{-- <input type="submit" class="btn btn-primary" value="Send Email"> --}}
-                <a href="/send-mail" class="col-md-6 btn btn-primary">Send Email</a><br><br>
+                {{-- <a href="/send-mail" class="col-md-6 btn btn-primary">Send Email</a><br><br> --}}
                 @if (!auth()->user())
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
