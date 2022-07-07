@@ -4,35 +4,35 @@
 
 <div class="container-fluid" style="margin-top: -2.4rem" >
        <div class="row">
-         <div class="col-3 " style="background: white; min-height: 80vh;">
-            <div class="menu_item" style="margin-left: 40px;margin-top: 20px">
-                <a href="/dashbroad">
+         <div class="col-3 " style="background: rgb(14, 40, 113);e; min-height: 100vh;">
+            <div class="menu_item" style="margin-left: 20px;margin-top: 20px">
+                <a href="/dashbroad" class="text-white">
                 DASHBROAD
                 </a>
             </div>
             <hr>
-            <div class="menu_item" style="margin-left: 40px;">
-                <a href="{{route('addPost')}}">
+            <div class="menu_item" style="margin-left: 20px;">
+                <a href="{{route('addPost')}}" class="text-white">
                 ADD NEW POST
             </a>
             </div>
             <hr>
-            <div class="menu_item" style="margin-left: 40px">
+            <div class="menu_item" style="margin-left: 20px" class="text-white">
                 <a href="{{route('manager')}}">
                 MANAGER POSTS
                 </a>
             </div>
             <hr>
             @if(auth()->user()->role=='admin')
-            <div class="menu_item" style="margin-left: 40px">
-                <a href="{{route('users')}}">
+            <div class="menu_item" style="margin-left: 20px">
+                <a href="{{route('users')}}" class="text-white">
                 MANAGER USERS
                 </a>
             </div>
             <hr>
             @endif
          </div>
-         <div class="col-8" style="margin-left: 40px">
+         <div class="col-8" style="margin-left: 20px" class="text-white">
             <h2>MANAGER USERS</h2>
             <hr>
             @if($users->count()>0)

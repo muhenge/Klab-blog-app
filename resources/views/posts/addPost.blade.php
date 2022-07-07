@@ -4,27 +4,27 @@
 
 <div class="container-fluid" style="margin-top: -2.4rem" >
        <div class="row">
-         <div class="col-3 " style="background: white; min-height: 80vh;">
-            <div class="menu_item" style="margin-left: 40px;margin-top: 20px">
+         <div class="col-2 " style="background: rgb(14, 40, 113);; min-height: 100vh;">
+            <div class="menu_item" style="margin-left: 20px;margin-top: 20px">
                 <a href="/dashbroad">
                     DASHBROAD
                     </a>
             </div>
             <hr>
-            <div class="menu_item" style="margin-left: 40px;">
+            <div class="menu_item" style="margin-left: 20px;">
                 <a href="{{route('addPost')}}">
                 ADD NEW POST
             </a>
             </div>
             <hr>
-            <div class="menu_item" style="margin-left: 40px">
+            <div class="menu_item" style="margin-left: 20px">
                 <a href="{{route('manager')}}">
                     MANAGER POSTS
                     </a>
             </div>
             <hr>
             @if(auth()->user()->role=='admin')
-            <div class="menu_item" style="margin-left: 40px">
+            <div class="menu_item" style="margin-left: 20px">
                 <a href="{{route('users')}}">
                     MANAGER USERS
                     </a>
@@ -32,7 +32,7 @@
             <hr>
             @endif
          </div>
-         <div class="col-8" style="margin-left: 40px">
+         <div class="col-9" style="margin-left: 20px">
             <h2>ADD NEW POST</h2>
             <hr>
             <form action="{{ route('addPost')}}" method="post" enctype="multipart/form-data">

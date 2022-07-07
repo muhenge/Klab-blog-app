@@ -9,8 +9,8 @@
     <title>Posty</title>
 </head>
 
-<body class="bg-gray-200">
-    <nav class="p-4 mb-5 bg-white d-flex justify-content-between ">
+<body class="bg-gray-600">
+    <nav class=" p-4 mb-5  d-flex justify-content-between ">
         <ul class="d-flex text-center nav text-black">
             <li class="">
                 <a href="/" class="p-3 ">Home</a>
@@ -29,17 +29,17 @@
             <li class="">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
-                    <button type="submit" class="inline" style="border: none; background:white;">Logout</button>
+                    <button type="submit" class="inline" style="border: none; background:white;">Sign Out</button>
                 </form>
             </li>
             @endauth
 
             @guest
             <li class="">
-                <a href="{{ route('login')}}" class="p-3 ">Login</a>
+                <a href="{{ route('login')}}" class="p-3 ">Sign In</a>
             </li>
             <li class="">
-                <a href="{{ route('register')}}" class="p-3 ">Regist</a>
+                <a href="{{ route('register')}}" class="p-3 ">Sign Up</a>
             </li>
             @endguest
         </ul>
