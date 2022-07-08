@@ -87,7 +87,19 @@ class HomeController extends Controller
 
     }
 
-    public function ajaxRequest(Request $request){
+    public function users()
+    {
+        $users = User::get();
+        return view('users', compact('users'));
+    }
+
+    public function user($id)
+    {
+        $user = User::find($id);
+        return view('usersView2', compact('user'));
+    }
+
+    public function follwUserRequest(Request $request){
 
 
         $user = User::find($request->user_id);
@@ -95,23 +107,5 @@ class HomeController extends Controller
 
 
         return response()->json(['success'=>$response]);
-    }
-
-    public function users()
-    {
-        $users = User::get();
-        return view('users', compact('users'));
-    }
-
-
-    /**
-     * Show the application of itsolutionstuff.com.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function user($id)
-    {
-        $user = User::find($id);
-        return view('usersView', compact('user'));
     }
 }

@@ -565,6 +565,7 @@ class ComposerStaticInit0547a11b480e5831a538a1dece55436b
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EmailContoller' => __DIR__ . '/../..' . '/app/Http/Controllers/EmailContoller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\JWTController' => __DIR__ . '/../..' . '/app/Http/Controllers/JWTController.php',
         'App\\Http\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostController.php',
         'App\\Http\\Controllers\\PostView' => __DIR__ . '/../..' . '/app/Http/Controllers/PostView.php',
         'App\\Http\\Controllers\\TestQueueEmails' => __DIR__ . '/../..' . '/app/Http/Controllers/TestQueueEmails.php',

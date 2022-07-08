@@ -47,9 +47,6 @@ Route::post('/unlike-post/{id}',[App\Http\Controllers\HomeController::class,'unl
 Route::post('/read-more/{id}',[App\Http\Controllers\HomeController::class,'readmore'])->name('read-more');
 
 
-Route::get('users',[App\Http\Controllers\HomeController::class,'users'])->name('users');
-Route::get('user/{id}',[App\Http\Controllers\HomeController::class,'user'])->name('user.view');
-Route::post('ajaxRequest',[App\Http\Controllers\HomeController::class,'ajaxRequest'])->name('ajaxRequest');
 
 
 
@@ -59,7 +56,9 @@ Route::get('email-test/', function(){
     Mail::to("bisho@gmail.com")->send(new NewMail());
     });
 
-
+Route::get('users',[App\Http\Controllers\HomeController::class,'users'])->name('users');
+Route::get('user/{id}',[App\Http\Controllers\HomeController::class,'user'])->name('user.view');
+    Route::post('follow', [App\Http\Controllers\HomeController::class,'follow'])->name('follow');
 
 
    

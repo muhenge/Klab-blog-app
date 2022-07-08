@@ -74,7 +74,7 @@ class PostController extends Controller
     */
    public function show()
    {
-       $query=Post::all();
+       $query=Post::orderBy('created_at', 'DESC')->get();
        
        return view('home',compact('query'));
     //    return response()->json($query);
@@ -82,6 +82,7 @@ class PostController extends Controller
    public function showPost()
    {
         $q=Auth::user()->id;
+        
        $query=Post::all()->where("user_id",$q);
        
         return view('addPost',compact('query'));

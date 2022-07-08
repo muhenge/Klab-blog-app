@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+// use Overtrue\LaravelFollow\Followable;
+// use Overtrue\LaravelFollow\Traits\CanFollow;
+// use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 
 
 class User extends Authenticatable implements JWTSubject

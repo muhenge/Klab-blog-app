@@ -18,6 +18,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\EmailContoller' => $baseDir . '/app/Http/Controllers/EmailContoller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\JWTController' => $baseDir . '/app/Http/Controllers/JWTController.php',
     'App\\Http\\Controllers\\PostController' => $baseDir . '/app/Http/Controllers/PostController.php',
     'App\\Http\\Controllers\\PostView' => $baseDir . '/app/Http/Controllers/PostView.php',
     'App\\Http\\Controllers\\TestQueueEmails' => $baseDir . '/app/Http/Controllers/TestQueueEmails.php',
