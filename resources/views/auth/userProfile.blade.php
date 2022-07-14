@@ -4,36 +4,11 @@
 
 <div class="container-fluid" style="margin-top: -2.4rem" >
        <div class="row">
-         <div class="col-3 " style="background: white; min-height: 80vh;">
-            <div class="menu_item" style="margin-left: 40px;margin-top: 20px">
-                <a href="/dashbroad">
-                    DASHBROAD
-                    </a>
-            </div>
-            <hr>
-            <div class="menu_item" style="margin-left: 40px;">
-                <a href="{{route('addPost')}}">
-                ADD NEW POST
-            </a>
-            </div>
-            <hr>
-            <div class="menu_item" style="margin-left: 40px">
-                <a href="{{route('manager')}}">
-                MANAGER POSTS
-                </a>
-            </div>
-            <hr>
-            @if(auth()->user()->role=='admin')
-            <div class="menu_item" style="margin-left: 40px">
-                <a href="{{route('users')}}">
-                    MANAGER USERS
-                    </a>
-            </div>
-            <hr>
-            @endif
+         <div class="col-2 ">
+            
          </div>
          <div class="col-8" style="margin-left: 40px">
-            <h2>USER PROFILE</h2>
+            <B>USER PROFILE</B>
             <hr>
             @foreach($user as $profile)
             <div class="col-12 " style="background: white; min-height: 80vh;">
@@ -49,19 +24,26 @@
                           @if(auth()->user()->id == $profile->id)
                           <div class="col-4">
                             <a href="{{route('editProfile')}}">
-                                <button>Edit Profile</button>
+                                <button class="btn btn-warning">Edit Profile</button>
                             </a>
                           </div>
                           @endif
                        </div>
+                       <div class="d-flex">
+                        <div class="pr-5 text-bold"><b>{{$profile->posts()->count()}}</b> Post </div>
+                        <div class="pr-5"><strong>23k</strong> followers </div>
+                        <div class="pr-5 "><strong>2</strong> following </div>
+                
+                    </div>
+                    <div  class="pt-4 font-weight-bold">Category: Auth</div>
+                    <div> Bio </div>
+                    <div> <a href="">www.blog.com</a></div>
                        <div class="row pt-4">
-                          <div class="col-8">
-                              <h3>{{$profile->posts()->count()}} Posts</h3>
-                          </div>
+                        
                        </div>
                        <div class="row pt-4">
                           <div class="col-8">
-                              <h3>{{$profile->firstname}} {{$profile->lastname}}</h3>
+                              <b>Name: {{$profile->firstname}} {{$profile->lastname}}</b>
                           </div>
                        </div>
                     </div>

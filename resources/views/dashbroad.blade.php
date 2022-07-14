@@ -1,44 +1,87 @@
-@extends('layouts.app')
 
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
 
-<div class="container-fluid" style="margin-top: -2.4rem" >
-       <div class="row">
-         <div class="col-2 " style="background: rgb(14, 40, 113);  min-height: 100vh; ">
-            <div class="menu_item" style="margin-left: 20px;margin-top: 10px; text-white; ">
-                <a href="/dashbroad" class="text-white">
-                    DASHBROAD
-                    </a>
-            </div>
-            <hr>
-            <div class="menu_item" style="margin-left: 20px;">
-                <a href="{{route('addPost')}}" class="text-white">
-                ADD NEW POST
-            </a>
-            </div>
-            <hr>
-            <div class="menu_item" style="margin-left: 20px">
-                <a href="{{route('manager')}}" class=" text-white ">
-                    MANAGER POSTS
-                    </a>
-            </div>
-            <hr>
-            @if(auth()->user()->role=='admin')
-            <div class="menu_item" style="margin-left: 20px">
-                <a href="{{route('users')}}" class="text-white ">
-                    MANAGER USERS
-                    </a>
-            </div>
-            <hr>
-            @endif
-         </div>
-         <div class="col-9" style="margin-left: 20px">
-            <h4>Welcome To Your Dashboard</h4>
-            <hr>
-            <div class="row">
-               
-                </div>
-            </div>
-         </div>
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a href="/" style="text-decoration: none; color: rgb(98, 98, 98);" class="p-1 "><H4>VIEW ALL BLOGS</H4></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a href="{{route('dashbroad')}}">Dashboard</a></li>
+        <li><a href="{{route('addPost')}}">Add New Post</a></li>
+        <li><a href="{{route('manager')}}">All Posts</a></li>
+        @if(auth()->user()->role=='admin')
+        <li><a href="{{route('users')}}">All Users</a></li>
+        @endif
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <a href="/" style="text-decoration: none; color: rgb(98, 98, 98);" class="p-1 "><H4>VIEW ALL BLOGS</H4></a>
+      <ul class="nav nav-pills nav-stacked">
+        <li ><a href="{{route('dashbroad')}}">Dashboard</a></li>
+        <li><a href="{{route('addPost')}}">Add New Post</a></li>
+        <li><a href="{{route('manager')}}">All Posts</a></li>
+        @if(auth()->user()->role=='admin')
+        <li><a href="{{route('users')}}">All Users</a></li>
+        @endif
+        <li class="">
+          <form action="{{route('logout')}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-danger" style="border: none;">Sign Out</button>
+          </form>
+      </li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Dashboard</h4>
+        <p>Manage your contents</p>
+      </div>
+    
+   
+
+    </div>
+  </div>
 </div>
-@endsection
+
+</body>
+</html>
+
