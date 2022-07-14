@@ -29,7 +29,9 @@ class AddPostController extends Controller
                 'image' => 'required'
             ]
         );
-        $imagePath = $request->image->store('/uploads', 'public');
+        $fileImage = $request->file('image');
+        $imagePath = $request->file('image')->move('upload/', rand(0, 1000).".".$fileImage->extension());
+        // $imagePath = $request->image->store('/uploads', 'public');
         $request->user()->posts()->create(
             [
                 'title' => $request->title,

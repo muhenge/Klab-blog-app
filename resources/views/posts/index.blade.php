@@ -14,7 +14,8 @@
                     <span style="font-size: 18px; ">{{$post->content}}</span>   
                </div>
                 </div>
-                <img src="/storage/app/public/uploads{{$post->image}}" alt="" width="300" height="300">
+                <img src="{{asset($post->image)}}" alt="" width="300" height="300">
+                
                 @foreach($users as $user)
                     @if($user->id == $post->user_id)
                         <div class="user">

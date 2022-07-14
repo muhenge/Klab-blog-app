@@ -14,7 +14,7 @@
             <div class="col-12 " style="background: white; min-height: 80vh;">
                 <div class="row pt-4">
                     <div class="col-4 ">
-                        <img src="/storage/img/user.png" alt="" width="150" style="border-radius: 50%">
+                        <img src="/public/upload/40.png" alt="" width="150" style="border-radius: 50%">
                     </div>
                     <div class="col-7">
                        <div class="row">
@@ -53,7 +53,7 @@
                     @foreach($posts as $post)
                     <div class="col-4">
                         <a href="{{ route('post', $post->id) }}" style="text-decoration: none" title="{{$post->title}}">
-                        <img src="/storage/{{$post->image}}" alt="" width="200" height="200">
+                        <img src="{{asset($post->image)}}" alt="" width="200" height="200">
                         </a>
                     </div>
                     @endforeach

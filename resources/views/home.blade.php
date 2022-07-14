@@ -10,7 +10,7 @@
             @foreach($posts as $post)
             <div class="col-4 p-4 " style=" margin-top:10px;border-radius: 10px">
                     <a href="{{ route('post', $post->id) }}" style="text-decoration: none;">
-                        <img src="/storage/{{$post->image}}" alt="" width="300" height="300">
+                        <img src="{{asset($post->image)}}" alt="" width="300" height="300">
                     
                         <div class="row text-dark" style="font-size: 14px">
                             <div class="col-6 p-2">
