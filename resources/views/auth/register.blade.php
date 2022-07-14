@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex  justify-content-center mb-5">
-    <div class="w-50 p-4 bg-white rounded-lg">
+    <div class="w-30 p-4 bg-green rounded-lg">
         <form action="{{ route('register')}}" method="post">
             @csrf
             <div class="form-group">
@@ -60,7 +60,7 @@
                 <label class="form-check-label" for="exampleCheck1">Remember me</label>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary form-control">Register</button>
+                <button type="submit" class="btn btn-primary form-control"style="background-color:#66b364">Register</button>
             </div>
         </form>
     </div>

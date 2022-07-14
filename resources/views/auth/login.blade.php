@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex  justify-content-center mb-5">
-    <div class="w-50 p-4 bg-white rounded-lg">
+    <div class="w-30 p-4 bg-pink rounded-lg">
         @if(session('status'))
 
         {{session('status')}}
@@ -34,7 +34,7 @@
                 <label class="form-check-label" for="exampleCheck1">Remember me</label>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary form-control">Login</button>
+                <button type="submit" class="btn btn-primary form-control" style="background-color:#66b364">Login</button>
             </div>
         </form>
     </div>

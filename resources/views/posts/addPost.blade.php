@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container-fluid" style="margin-top: -2.4rem" >
+<div class="container-fluid" style="margin-top: -3rem" >
        <div class="row">
-         <div class="col-3 " style="background: white; min-height: 80vh;">
+         <div class="col-3 " style="background: rgba(67, 185, 16, 0.687); min-height: 80vh;">
             <div class="menu_item" style="margin-left: 40px;margin-top: 20px">
                 <a href="/dashbroad">
                     DASHBROAD
@@ -32,7 +32,7 @@
             <hr>
             @endif
          </div>
-         <div class="col-8" style="margin-left: 40px">
+         <div class="col-8 w-30" style="margin-left: 40px">
             <h2>ADD NEW POST</h2>
             <hr>
             <form action="{{ route('addPost')}}" method="post" enctype="multipart/form-data">
@@ -65,7 +65,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary form-control">Add</button>
+                    <button type="submit" class="btn btn-primary form-control" style="background-color:#66b364">Add</button>
                 </div>
             </form>
          </div>

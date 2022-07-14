@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container-fluid" style="margin-top: -2.4rem" >
+<div class="container-fluid" style="margin-top: -3rem" >
        <div class="row">
-         <div class="col-3 " style="background: white; min-height: 80vh;">
+         <div class="col-3 " style="background: rgba(67, 185, 16, 0.687); min-height: 80vh;">
             <div class="menu_item" style="margin-left: 40px;margin-top: 20px">
                 <a href="/dashbroad">
                     DASHBROAD
@@ -33,12 +33,12 @@
             @endif
          </div>
          <div class="col-8" style="margin-left: 40px">
-            <h2>MANAGER POSTS</h2>
+            <h2 style="text-align: center;">MANAGER POSTS</h2>
             <hr>
             @if($posts->count()>0)
-            <table border="1" style="width: 100%">
+            <table border="0" style="width: 100%;background: rgba(67, 185, 16, 0.687);color:white;font-size:15px">
                 <thead>
-                    <tr>
+                    <tr style="background-color:#53bb50;font: size 20px;text-align: center;">
                         <th>Title</th>
                         <th>Auth</th>
                         <th>Option</th>
@@ -46,7 +46,7 @@
                 </thead>
                 <tbody>
                     @foreach($posts as $post)
-                    <tr>
+                    <tr style="text-align: center;">
                         <td>{{$post->title}}</td>
                         @foreach($users as $user)
                             @if($user->id===$post->user_id)

@@ -9,16 +9,16 @@
     <title>Posty</title>
 </head>
 
-<body class="bg-gray-200">
-    <nav class="p-4 mb-5 bg-white d-flex justify-content-between ">
-        <ul class="d-flex text-center nav text-black">
+<body class="bg-skyblue">
+    <nav class="p-4 mb-5  d-flex justify-content-center text-red-200 " style="background-color:#53bb50;color:red; font-size:20px">
+        <ul class="d-flex text-center nav text-white">
             <li class="">
                 <a href="/" class="p-3 ">Home</a>
             </li>
             @auth
-            <li class="">
-                <a href="{{ route('dashbroad')}}" class="p-3 ">Dashbroad</a>
-            </li>
+            <!-- <li class="">
+                <a href="{{ route('dashbroad')}}" class="p-6 ">Dashbroad</a>
+            </li> -->
             @endauth
         </ul>
         <ul class="d-flex text-center nav">
@@ -29,7 +29,7 @@
             <li class="">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
-                    <button type="submit" class="inline" style="border: none; background:white;">Logout</button>
+                    <button type="submit" class="inline" style="border: none; background-color:#66b364;color:white">Logout</button>
                 </form>
             </li>
             @endauth

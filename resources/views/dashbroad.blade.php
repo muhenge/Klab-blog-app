@@ -2,50 +2,36 @@
 
 @section('content')
 
-<div class="container-fluid" style="margin-top: -2.4rem" >
-       <div class="row">
-         <div class="col-3 " style="background: white; min-height: 80vh;">
-            <div class="menu_item" style="margin-left: 40px;margin-top: 20px">
-                <a href="/dashbroad">
-                    DASHBROAD
-                    </a>
-            </div>
-            <hr>
-            <div class="menu_item" style="margin-left: 40px;">
-                <a href="{{route('addPost')}}">
+<nav class="p-4 mb-5  d-flex justify-content-center text-red-200 " style=" font-size:20px">
+            <ul class="d-flex text-center nav text-black">
+            <li>
+            <button class="inline" style="border: none; background-color:#66b364;margin-left: 40px;"> <a href="{{route('addPost')}}">
                 ADD NEW POST
+               
             </a>
-            </div>
-            <hr>
-            <div class="menu_item" style="margin-left: 40px">
+</button>
+            </li>
+           <li>
+           <button class="inline" style="border: none; background-color:#66b364;margin-left: 40px;">
                 <a href="{{route('manager')}}">
                     MANAGER POSTS
+                  
                     </a>
-            </div>
-            <hr>
+</button>
+                    </li>
+         
             @if(auth()->user()->role=='admin')
-            <div class="menu_item" style="margin-left: 40px">
+           <li>
+           <button class="inline" style="border: none; background-color:#66b364;margin-left: 40px;">
                 <a href="{{route('users')}}">
                     MANAGER USERS
                     </a>
-            </div>
-            <hr>
+                    </a>
+</button>
+                    </li>
             @endif
-         </div>
-         <div class="col-8" style="margin-left: 40px">
-            <h2>Dashbroad</h2>
-            <hr>
-            <div class="row">
-                <div class="col-4 card" style="background: white; height: 8rem;">
+         
+       </ul>
+      </nav>
 
-                </div>
-                <div class="col-4 card" style="background: white; height: 8rem;">
-
-                </div>
-                <div class="col-4 card" style="background: white; height: 8rem;">
-
-                </div>
-            </div>
-         </div>
-</div>
 @endsection
